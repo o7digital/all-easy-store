@@ -189,6 +189,7 @@
 
     .lang-switch {
       position: relative;
+      z-index: 70;
     }
 
     .lang-button {
@@ -962,8 +963,8 @@
             EN <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
           </button>
           <div class="lang-menu" id="lang-menu">
-            <button class="lang-item active" type="button">English</button>
-            <button class="lang-item" type="button">Español</button>
+            <button class="lang-item active" type="button" data-lang="en">English</button>
+            <button class="lang-item" type="button" data-lang="es">Español</button>
           </div>
         </div>
         <a class="icon-btn" href="#" aria-label="Favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
@@ -1133,7 +1134,7 @@
             </div>
             <div class="mini-quote">
               <strong>Visual direction</strong>
-              Clearer, stronger, and more modern. Exactly the kind of presence that helps sell vehicles, homes, products, and services at scale.
+              <span id="mini-quote-text">Clearer, stronger, and more modern. Exactly the kind of presence that helps sell vehicles, homes, products, and services at scale.</span>
             </div>
           </aside>
         </div>
@@ -1182,9 +1183,238 @@
       const nav = document.getElementById('primary-nav');
       const langButton = document.getElementById('lang-button');
       const langMenu = document.getElementById('lang-menu');
+      const langItems = Array.from(document.querySelectorAll('.lang-item'));
       if (!toggle || !nav) return;
 
+      const refs = {
+        html: document.documentElement,
+        topbarLeft: document.querySelector('.topbar-inner > div:first-child'),
+        topbarRight: document.querySelector('.topbar-inner > div:last-child'),
+        brandSub: document.querySelector('.brand-sub'),
+        nav: Array.from(document.querySelectorAll('#primary-nav a')),
+        cta: document.querySelector('.cta'),
+        eyebrow: document.querySelector('.eyebrow'),
+        heroTitle: document.querySelector('.hero-copy h1'),
+        heroDesc: document.querySelector('.hero-copy p'),
+        heroButtons: Array.from(document.querySelectorAll('.hero-actions a')),
+        heroStats: Array.from(document.querySelectorAll('.hero-stats .stat span')),
+        searchLabel: document.querySelector('.search-panel .panel-label'),
+        searchTitle: document.querySelector('.search-panel .panel-title'),
+        searchInput: document.getElementById('search-query'),
+        searchCategoryOptions: Array.from(document.querySelectorAll('#search-category option')),
+        searchCityFirst: document.querySelector('#search-city option:first-child'),
+        searchButton: document.querySelector('.search-card button'),
+        sideLabel: document.querySelector('.side-card .panel-label'),
+        sideTitle: document.querySelector('.side-card h3'),
+        sideDesc: document.querySelector('.side-card p'),
+        section1Title: document.querySelectorAll('.section-head h2')[0],
+        section1Desc: document.querySelectorAll('.section-head p')[0],
+        section1Link: document.querySelectorAll('.section-head .link-more')[0],
+        categoryTitles: Array.from(document.querySelectorAll('.categories .category-card h3')),
+        categoryDescs: Array.from(document.querySelectorAll('.categories .category-card p')),
+        section2Title: document.querySelectorAll('.section-head h2')[1],
+        section2Desc: document.querySelectorAll('.section-head p')[1],
+        section2Link: document.querySelectorAll('.section-head .link-more')[1],
+        listingTags: Array.from(document.querySelectorAll('.tag')),
+        listingTitles: Array.from(document.querySelectorAll('.feature-stack .product-body h3')),
+        listingDescs: Array.from(document.querySelectorAll('.feature-stack .product-desc')),
+        detailBtns: Array.from(document.querySelectorAll('.ghost-btn')),
+        editorialLabel: document.querySelector('.editorial-panel .panel-label'),
+        editorialTitle: document.querySelector('.editorial-panel h3'),
+        editorialDesc: document.querySelector('.editorial-panel p'),
+        quoteTitle: document.querySelector('.mini-quote strong'),
+        quoteDesc: document.getElementById('mini-quote-text'),
+        bannerTitle: document.querySelector('.banner h2'),
+        bannerDesc: document.querySelector('.banner p'),
+        bannerLabel: document.querySelector('.banner-box .panel-label'),
+        bannerItems: Array.from(document.querySelectorAll('.banner-box > div')).slice(1),
+        footerLeft: document.querySelector('.footer-shell > div:first-child'),
+        footerRight: document.querySelector('.footer-shell > div:last-child')
+      };
+
+      const t = {
+        en: {
+          langCode: 'EN',
+          menuLabel: 'Language selector',
+          topbarLeft: 'International market · cars, homes, collections, and services for everyone',
+          topbarRight: 'Mexico-wide reach · trusted listings · clear and modern experience',
+          brandSub: 'International Market',
+          nav: ['Home', 'Automotive', 'Residences', 'Collections', 'Private Services', 'Private Desk'],
+          cta: 'Publish',
+          eyebrow: 'International digital marketplace',
+          heroTitle: 'An international market to buy and sell with stronger visibility.',
+          heroDesc: 'This V3 feels more global, more modern, and more reliable. The site is built for everyday transactions across Mexico: cars, properties, products, and services in one clear marketplace.',
+          heroButtons: ['Explore listings', 'View platform experience'],
+          heroStats: [
+            'Active listings with stronger visibility and buyer reach',
+            'Clients and sellers with a stronger, more trusted profile',
+            'Satisfaction across supported transactions'
+          ],
+          searchLabel: 'Smart search desk',
+          searchTitle: 'Find a vehicle, home, product, or service in minutes',
+          searchPlaceholder: 'What would you like to discover?',
+          searchCategoryOptions: ['All categories', 'Automotive', 'Residences', 'Collections', 'Private Services'],
+          searchCityFirst: 'City / Area',
+          searchButton: 'Explore listings',
+          sideLabel: 'Top picks',
+          sideTitle: 'Homes and opportunities with clear value and strong market appeal.',
+          sideDesc: 'A side feature block designed to highlight demand-driven listings for a broad audience.',
+          section1Title: 'Market categories',
+          section1Desc: 'Category blocks with clear hierarchy, strong photography, and a structure built for national scale and daily transactions.',
+          section1Link: 'View categories',
+          categoryTitles: ['Automotive', 'Residences', 'Collections', 'Private Services'],
+          categoryDescs: [
+            'Cars, SUVs, sedans, and motorcycles with strong demand across major Mexican cities.',
+            'Apartments, houses, and investment properties with clear details and trusted information.',
+            'Selected products, technology, and lifestyle items aligned with real buyer demand.',
+            'Consulting, concierge, specialists, and practical services for individuals and businesses.'
+          ],
+          section2Title: 'Featured listings',
+          section2Desc: 'A clear layout with strong visuals, asymmetric blocks, and better readability for faster decision-making.',
+          section2Link: 'Explore listings',
+          listingTags: ['Featured', 'New listing'],
+          listingTitles: ['Aston Martin DBX 2026', 'Sky residence with sculpted terrace'],
+          listingDescs: [
+            'A listing designed to improve clarity, trust, and buyer intent with key details at a glance.',
+            'Architecture, natural light, and practical layout details presented for confident purchase decisions.'
+          ],
+          detailBtn: 'View details',
+          editorialLabel: 'Platform note',
+          editorialTitle: 'This now feels like a true international market platform.',
+          editorialDesc: 'The header is clearer, the hero is stronger, and the full composition improves trust and usability for broad market adoption.',
+          quoteTitle: 'Visual direction',
+          quoteDesc: 'Clearer, stronger, and more modern. Exactly the kind of presence that helps sell vehicles, homes, products, and services at scale.',
+          bannerTitle: 'V3 international market: stronger, clearer, and more scalable.',
+          bannerDesc: 'This direction pushes the platform forward: a strong hero, asymmetrical composition, and a tone designed for broad market trust.',
+          bannerLabel: 'Why it performs better',
+          bannerItems: [
+            'More credibility for listings across categories',
+            'Stronger hero photography and clearer product focus',
+            'Brand tone aligned with an international market',
+            'Stronger trust and conversion potential'
+          ],
+          footerLeft: '© 2026 All Easy Store · International market platform concept',
+          footerRight: 'Automotive · Residences · Collections · Private Services · Private Desk'
+        },
+        es: {
+          langCode: 'ES',
+          menuLabel: 'Selector de idioma',
+          topbarLeft: 'Mercado internacional · autos, hogares, colecciones y servicios para todos',
+          topbarRight: 'Cobertura en todo México · publicaciones confiables · experiencia clara y moderna',
+          brandSub: 'Mercado Internacional',
+          nav: ['Inicio', 'Automóviles', 'Residencias', 'Colecciones', 'Servicios', 'Mesa Privada'],
+          cta: 'Publicar',
+          eyebrow: 'Mercado digital internacional',
+          heroTitle: 'Un mercado internacional para comprar y vender con mayor visibilidad.',
+          heroDesc: 'Esta V3 se siente más global, más moderna y más confiable. El sitio está pensado para transacciones diarias en México: autos, propiedades, productos y servicios en un solo mercado claro.',
+          heroButtons: ['Explorar publicaciones', 'Ver experiencia de la plataforma'],
+          heroStats: [
+            'Publicaciones activas con mayor visibilidad y alcance',
+            'Clientes y vendedores con un perfil más confiable',
+            'Satisfacción en transacciones gestionadas'
+          ],
+          searchLabel: 'Mesa inteligente de búsqueda',
+          searchTitle: 'Encuentra un vehículo, hogar, producto o servicio en minutos',
+          searchPlaceholder: '¿Qué te gustaría encontrar?',
+          searchCategoryOptions: ['Todas las categorías', 'Automóviles', 'Residencias', 'Colecciones', 'Servicios'],
+          searchCityFirst: 'Ciudad / Zona',
+          searchButton: 'Explorar publicaciones',
+          sideLabel: 'Destacados',
+          sideTitle: 'Hogares y oportunidades con valor claro y alta demanda.',
+          sideDesc: 'Un bloque lateral pensado para destacar publicaciones con demanda real y alcance masivo.',
+          section1Title: 'Categorías del mercado',
+          section1Desc: 'Bloques de categoría con jerarquía clara, buena fotografía y estructura para escala nacional.',
+          section1Link: 'Ver categorías',
+          categoryTitles: ['Automóviles', 'Residencias', 'Colecciones', 'Servicios'],
+          categoryDescs: [
+            'Autos, SUV, sedanes y motocicletas con fuerte demanda en las principales ciudades de México.',
+            'Departamentos, casas y propiedades de inversión con información clara y confiable.',
+            'Productos seleccionados, tecnología y estilo de vida alineados con la demanda real.',
+            'Consultoría, especialistas y servicios prácticos para personas y empresas.'
+          ],
+          section2Title: 'Publicaciones destacadas',
+          section2Desc: 'Una estructura clara con visuales fuertes y mejor lectura para decidir más rápido.',
+          section2Link: 'Explorar publicaciones',
+          listingTags: ['Destacado', 'Nueva publicación'],
+          listingTitles: ['Aston Martin DBX 2026', 'Residencia elevada con terraza escultórica'],
+          listingDescs: [
+            'Una publicación diseñada para mejorar claridad, confianza e intención de compra.',
+            'Arquitectura, luz natural y detalles prácticos presentados para decidir con confianza.'
+          ],
+          detailBtn: 'Ver detalle',
+          editorialLabel: 'Nota de plataforma',
+          editorialTitle: 'Ahora se siente como una verdadera plataforma de mercado internacional.',
+          editorialDesc: 'El encabezado es más claro, el hero más fuerte y la composición mejora confianza y usabilidad.',
+          quoteTitle: 'Dirección visual',
+          quoteDesc: 'Más clara, más fuerte y más moderna. Justo la presencia que ayuda a vender a gran escala.',
+          bannerTitle: 'V3 mercado internacional: más fuerte, más claro y más escalable.',
+          bannerDesc: 'Esta dirección empuja la plataforma hacia adelante: hero fuerte, composición asimétrica y tono pensado para confianza masiva.',
+          bannerLabel: 'Por qué funciona mejor',
+          bannerItems: [
+            'Más credibilidad para publicaciones en todas las categorías',
+            'Mejor fotografía hero y enfoque más claro del producto',
+            'Tono de marca alineado con un mercado internacional',
+            'Mayor confianza y potencial de conversión'
+          ],
+          footerLeft: '© 2026 All Easy Store · Concepto de plataforma de mercado internacional',
+          footerRight: 'Automóviles · Residencias · Colecciones · Servicios · Mesa Privada'
+        }
+      };
+
+      function applyLang(lang) {
+        const tr = t[lang] || t.en;
+        refs.html.lang = lang;
+        langButton.innerHTML = tr.langCode + ' <i class="fa-solid fa-angle-down" aria-hidden="true"></i>';
+        langButton.setAttribute('aria-label', tr.menuLabel);
+        refs.topbarLeft.textContent = tr.topbarLeft;
+        refs.topbarRight.textContent = tr.topbarRight;
+        refs.brandSub.textContent = tr.brandSub;
+        refs.nav.forEach((el, i) => { el.textContent = tr.nav[i]; });
+        refs.cta.lastChild.textContent = ' ' + tr.cta;
+        refs.eyebrow.lastChild.textContent = ' ' + tr.eyebrow;
+        refs.heroTitle.textContent = tr.heroTitle;
+        refs.heroDesc.textContent = tr.heroDesc;
+        refs.heroButtons.forEach((el, i) => { el.lastChild.textContent = ' ' + tr.heroButtons[i]; });
+        refs.heroStats.forEach((el, i) => { el.textContent = tr.heroStats[i]; });
+        refs.searchLabel.textContent = tr.searchLabel;
+        refs.searchTitle.textContent = tr.searchTitle;
+        refs.searchInput.placeholder = tr.searchPlaceholder;
+        refs.searchCategoryOptions.forEach((el, i) => { el.textContent = tr.searchCategoryOptions[i]; });
+        refs.searchCityFirst.textContent = tr.searchCityFirst;
+        refs.searchButton.textContent = tr.searchButton;
+        refs.sideLabel.textContent = tr.sideLabel;
+        refs.sideTitle.textContent = tr.sideTitle;
+        refs.sideDesc.textContent = tr.sideDesc;
+        refs.section1Title.textContent = tr.section1Title;
+        refs.section1Desc.textContent = tr.section1Desc;
+        refs.section1Link.textContent = tr.section1Link;
+        refs.categoryTitles.forEach((el, i) => { el.textContent = tr.categoryTitles[i]; });
+        refs.categoryDescs.forEach((el, i) => { el.textContent = tr.categoryDescs[i]; });
+        refs.section2Title.textContent = tr.section2Title;
+        refs.section2Desc.textContent = tr.section2Desc;
+        refs.section2Link.textContent = tr.section2Link;
+        refs.listingTags.forEach((el, i) => { el.textContent = tr.listingTags[i]; });
+        refs.listingTitles.forEach((el, i) => { el.textContent = tr.listingTitles[i]; });
+        refs.listingDescs.forEach((el, i) => { el.textContent = tr.listingDescs[i]; });
+        refs.detailBtns.forEach((el) => { el.textContent = tr.detailBtn; });
+        refs.editorialLabel.textContent = tr.editorialLabel;
+        refs.editorialTitle.textContent = tr.editorialTitle;
+        refs.editorialDesc.textContent = tr.editorialDesc;
+        refs.quoteTitle.textContent = tr.quoteTitle;
+        refs.quoteDesc.textContent = tr.quoteDesc;
+        refs.bannerTitle.textContent = tr.bannerTitle;
+        refs.bannerDesc.textContent = tr.bannerDesc;
+        refs.bannerLabel.textContent = tr.bannerLabel;
+        refs.bannerItems.forEach((el, i) => { el.lastChild.textContent = ' ' + tr.bannerItems[i]; });
+        refs.footerLeft.textContent = tr.footerLeft;
+        refs.footerRight.textContent = tr.footerRight;
+        langItems.forEach((item) => item.classList.toggle('active', item.dataset.lang === lang));
+        localStorage.setItem('aes_lang', lang);
+      }
+
       toggle.addEventListener('click', function () {
+        langMenu.classList.remove('open');
+        langButton.setAttribute('aria-expanded', 'false');
         const isOpen = nav.classList.toggle('open');
         toggle.setAttribute('aria-expanded', String(isOpen));
         toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
@@ -1200,8 +1430,18 @@
 
       if (langButton && langMenu) {
         langButton.addEventListener('click', function () {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
           const isOpen = langMenu.classList.toggle('open');
           langButton.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        langItems.forEach(function (item) {
+          item.addEventListener('click', function () {
+            applyLang(item.dataset.lang || 'en');
+            langMenu.classList.remove('open');
+            langButton.setAttribute('aria-expanded', 'false');
+          });
         });
 
         document.addEventListener('click', function (event) {
@@ -1211,6 +1451,8 @@
           }
         });
       }
+
+      applyLang(localStorage.getItem('aes_lang') || 'en');
     })();
   </script>
 </body>
