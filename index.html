@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Easy Store | Maison Privée Marketplace</title>
+  <meta name="description" content="Al Easy Store, maison privée marketplace: activos premium, residencias exclusivas, colecciones selectas y servicios de alto valor con presencia editorial de lujo." />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --sand: #ece0cf;
+      --paper: #faf7f2;
+      --ink: #14110e;
+      --muted: #6e645b;
+      --line: rgba(20, 17, 14, 0.12);
+      --gold: #b88949;
+      --gold-2: #d7b27d;
+      --dark: #0c0b09;
+      --card: rgba(255, 255, 255, 0.78);
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.08);
+      --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.14);
+      --radius-xl: 34px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 12px;
+      --max: 1440px;
+      --section-gap: clamp(2.2rem, 5vw, 4.2rem);
+      --focus: 0 0 0 3px rgba(184, 137, 73, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 137, 73, 0.12), transparent 24%),
+        linear-gradient(180deg, #fbf8f3 0%, #f5eee4 54%, #f0e7dc 100%);
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+    }
+
+    a, button, input, select {
+      transition: all 0.24s ease;
+    }
+
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #0c0b09;
+      color: rgba(255, 255, 255, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.83rem;
+    }
+
+    .topbar-inner {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(250, 247, 242, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #120f0b, #2b2218 48%, #b88949 130%);
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-strong);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .brand-name { font-size: 1.9rem; }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--ink);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      opacity: 0.9;
+    }
+
+    .nav a:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: 0.26s ease;
+    }
+
+    .nav a:hover::after { transform: scaleX(1); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn, .cta {
+      min-height: 48px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .icon-btn {
+      width: 48px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta {
+      padding: 0 20px;
+      gap: 10px;
+      background: linear-gradient(135deg, #13100c, #2a2017 55%, #b88949 155%);
+      color: white;
+      border: none;
+      font-weight: 600;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+    }
+
+    .hero {
+      padding: 34px 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.16fr 0.84fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      min-height: 840px;
+      border-radius: 42px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow-strong);
+      background:
+        linear-gradient(90deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.52) 40%, rgba(8, 8, 8, 0.16) 76%),
+        url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1900&q=80') center/cover no-repeat;
+    }
+
+    .hero-main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(184, 137, 73, 0.14), transparent 35%, rgba(0, 0, 0, 0.22));
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      padding: 78px 72px 64px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.84rem;
+      margin-bottom: 22px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(4.3rem, 7vw, 8rem);
+      color: white;
+      max-width: 860px;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy p {
+      max-width: 620px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.12rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .btn-light, .btn-dark {
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .btn-light {
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--dark);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-2px);
+      background: #fff;
+    }
+
+    .btn-dark {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 24px;
+      padding: 18px 20px;
+      backdrop-filter: blur(16px);
+      color: white;
+      min-height: 124px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.75rem;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1.05fr 0.95fr;
+      gap: 24px;
+    }
+
+    .side-card, .search-panel {
+      border-radius: 34px;
+      box-shadow: var(--shadow-strong);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .search-panel {
+      padding: 30px;
+      background: linear-gradient(180deg, rgba(250, 247, 242, 0.88), rgba(255, 255, 255, 0.72));
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      backdrop-filter: blur(20px);
+    }
+
+    .panel-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .search-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .search-card input,
+    .search-card select {
+      width: 100%;
+      height: 56px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.86);
+      padding: 0 16px;
+      font-size: 0.96rem;
+      outline: none;
+      color: var(--ink);
+    }
+
+    .search-card button {
+      height: 58px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #13100d, #2b2117 60%, #b88949 160%);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .search-card button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .side-card {
+      min-height: 380px;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      color: white;
+      padding: 28px;
+      display: flex;
+      align-items: end;
+    }
+
+    .side-card h3 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .side-card p {
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 360px;
+    }
+
+    .section {
+      padding: var(--section-gap) 0 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2.3rem, 4vw, 3.8rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 640px;
+      margin-top: 8px;
+    }
+
+    .link-more {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .link-more:hover {
+      color: #000;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: var(--gold);
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 22px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 300px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+      padding: 30px;
+      display: flex;
+      align-items: end;
+      color: white;
+      background-size: cover;
+      background-position: center;
+      isolation: isolate;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72));
+      z-index: -1;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.16);
+    }
+
+    .category-card h3 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    .category-card p { color: rgba(255, 255, 255, 0.82); }
+
+    .listings-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 1.05fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .feature-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(18px);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 34px 98px rgba(0, 0, 0, 0.16);
+    }
+
+    .product-media {
+      height: 360px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .product-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.34));
+    }
+
+    .tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 1;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: #111;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .fav {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.84);
+      color: #111;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+    }
+
+    .fav:hover {
+      transform: scale(1.04);
+      background: white;
+    }
+
+    .product-body {
+      padding: 24px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .product-body h3 {
+      font-size: 2.1rem;
+      margin-bottom: 14px;
+    }
+
+    .product-desc {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .ghost-btn {
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .ghost-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(20, 17, 14, 0.3);
+    }
+
+    .editorial-panel {
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+      background:
+        linear-gradient(180deg, rgba(17, 17, 17, 0.98), rgba(38, 30, 22, 0.96) 60%, rgba(184, 137, 73, 0.94) 150%);
+      color: white;
+      padding: 34px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .editorial-panel h3 {
+      font-size: 3rem;
+      margin-bottom: 14px;
+    }
+
+    .editorial-panel p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .mini-quote {
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1rem;
+    }
+
+    .mini-quote strong {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255, 255, 255, 0.56);
+      margin-bottom: 10px;
+    }
+
+    .banner {
+      margin: clamp(2.2rem, 4vw, 3rem) 0 0;
+      border-radius: 36px;
+      padding: 52px;
+      background:
+        linear-gradient(120deg, rgba(17, 17, 17, 0.97), rgba(44, 33, 22, 0.94) 60%, rgba(184, 137, 73, 0.92) 145%);
+      color: white;
+      box-shadow: var(--shadow-strong);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .banner h2 {
+      font-size: clamp(2.5rem, 4vw, 4.6rem);
+      margin-bottom: 14px;
+    }
+
+    .banner p {
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+    }
+
+    .banner-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 26px;
+      padding: 26px;
+      backdrop-filter: blur(14px);
+      display: grid;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .footer {
+      padding: 56px 0 28px;
+    }
+
+    .footer-shell {
+      border-top: 1px solid var(--line);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1240px) {
+      .hero-grid,
+      .categories,
+      .listings-layout,
+      .banner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .listings-layout > :last-child,
+      .hero-side {
+        grid-column: span 2;
+      }
+
+      .hero-main { min-height: 760px; }
+      .hero-copy { padding: 56px 48px 48px; }
+    }
+
+    @media (max-width: 920px) {
+      .header-inner {
+        grid-template-columns: auto 1fr auto;
+        min-height: 74px;
+        gap: 12px;
+      }
+
+      .menu-toggle { display: inline-flex; }
+
+      .nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        background: rgba(250, 247, 242, 0.98);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        padding: 14px;
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .nav.open { display: flex; }
+
+      .nav a {
+        padding: 10px 8px;
+        border-radius: 10px;
+      }
+
+      .nav a:hover {
+        background: rgba(184, 137, 73, 0.1);
+        transform: none;
+      }
+
+      .header-actions .cta {
+        display: none;
+      }
+
+      .hero-grid,
+      .categories,
+      .listings-layout,
+      .banner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main { min-height: auto; }
+
+      .hero-copy {
+        padding: 36px 24px;
+      }
+
+      .hero-copy h1 { font-size: clamp(2.9rem, 11vw, 4.1rem); }
+      .hero-copy p { font-size: 1rem; }
+      .hero-stats { grid-template-columns: 1fr; max-width: 100%; }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .listings-layout > :last-child,
+      .hero-side { grid-column: auto; }
+
+      .banner { padding: 26px 20px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(var(--max), calc(100% - 28px)); }
+
+      .topbar-inner {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      .brand-name { font-size: 1.5rem; }
+      .brand-sub { font-size: 0.64rem; letter-spacing: 0.18em; }
+
+      .hero-copy,
+      .search-panel,
+      .banner,
+      .editorial-panel {
+        padding: 22px 18px;
+      }
+
+      .hero-copy h1 { font-size: 2.65rem; }
+      .section-head h2 { font-size: 2.35rem; }
+      .product-body h3,
+      .side-card h3,
+      .panel-title { font-size: 1.8rem; }
+      .editorial-panel h3 { font-size: 2.2rem; }
+      .product-media { height: 280px; }
+      .product-bottom { flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div>Maison privée digitale · activos premium, residencias exclusivas, colecciones selectas y servicios de alto valor</div>
+      <div>Private desk · curaduría visual · presencia editorial de lujo</div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Al Easy Store home">
+        <div class="brand-mark"><i class="fa-solid fa-diamond" aria-hidden="true"></i></div>
+        <div>
+          <div class="brand-name">Al Easy Store</div>
+          <div class="brand-sub">Maison Privée Marketplace</div>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#">Inicio</a>
+        <a href="#">Automotive</a>
+        <a href="#">Residences</a>
+        <a href="#">Collections</a>
+        <a href="#">Private Services</a>
+        <a href="#">Private Desk</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-btn" href="#" aria-label="Favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+        <a class="icon-btn" href="#" aria-label="Shopping bag"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></a>
+        <a class="cta" href="#"><i class="fa-solid fa-plus" aria-hidden="true"></i> Publicar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <section class="hero-main" aria-label="Hero section with premium positioning">
+            <div class="hero-copy">
+              <div class="eyebrow"><i class="fa-solid fa-crown" aria-hidden="true"></i> Maison privée digital experience</div>
+              <h1>Una marca editorial de lujo para vender activos con mucha más presencia.</h1>
+              <p>Esta V3 se siente más internacional, más exclusiva y más aspiracional. El sitio ya no parece un simple marketplace: parece una maison premium enfocada en objetos, propiedades y experiencias de alto valor.</p>
+              <div class="hero-actions">
+                <a href="#" class="btn-light"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Explorar maison listings</a>
+                <a href="#" class="btn-dark"><i class="fa-solid fa-play" aria-hidden="true"></i> Ver signature experience</a>
+              </div>
+              <div class="hero-stats">
+                <div class="stat"><strong>+52K</strong><span>Listings curados con imagen premium y mejor percepción de valor</span></div>
+                <div class="stat"><strong>+21K</strong><span>Clientes y vendedores con perfil de confianza más exclusivo</span></div>
+                <div class="stat"><strong>99.4%</strong><span>Satisfacción en transacciones premium acompañadas</span></div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="hero-side" aria-label="Hero side panels">
+            <section class="search-panel">
+              <div class="panel-label">Private search desk</div>
+              <h2 class="panel-title">Encuentra una pieza, residencia o experiencia extraordinaria</h2>
+              <form class="search-card" action="#" method="get">
+                <label class="sr-only" for="search-query">Búsqueda</label>
+                <input id="search-query" type="text" placeholder="¿Qué deseas descubrir?" />
+
+                <label class="sr-only" for="search-category">Categoría</label>
+                <select id="search-category">
+                  <option>Todas las categorías</option>
+                  <option>Automotive</option>
+                  <option>Residences</option>
+                  <option>Collections</option>
+                  <option>Private Services</option>
+                </select>
+
+                <label class="sr-only" for="search-city">Ciudad</label>
+                <select id="search-city">
+                  <option>Ciudad / Zona</option>
+                  <option>CDMX</option>
+                  <option>Monterrey</option>
+                  <option>Guadalajara</option>
+                  <option>Riviera Maya</option>
+                </select>
+
+                <button type="submit">Explorar selección privada</button>
+              </form>
+            </section>
+
+            <article class="side-card">
+              <div>
+                <div class="panel-label" style="color: rgba(255, 255, 255, 0.64);">Editor’s choice</div>
+                <h3>Residencias de firma, diseño impecable y estatus visual inmediato.</h3>
+                <p>Una carta lateral pensada como bloque editorial premium, para reforzar la sensación de marca internacional.</p>
+              </div>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Universos signature</h2>
+            <p>Bloques de categoría con más presencia, plus de photographie et une composition plus proche de luxury real estate, fashion retail premium y maison privée.</p>
+          </div>
+          <a href="#" class="link-more">Ver universos</a>
+        </div>
+
+        <div class="categories">
+          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80')">
+            <div>
+              <h3>Automotive</h3>
+              <p>Supercars, SUVs de alta gama, sedanes ejecutivos y motos con presencia de colección.</p>
+            </div>
+          </article>
+
+          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80')">
+            <div>
+              <h3>Residences</h3>
+              <p>Penthouses, villas, residencias de autor y propiedades con acabados sobresalientes.</p>
+            </div>
+          </article>
+
+          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1400&q=80')">
+            <div>
+              <h3>Collections</h3>
+              <p>Objetos selectos, diseño premium, tecnología curada y lifestyle excepcional.</p>
+            </div>
+          </article>
+
+          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1400&q=80')">
+            <div>
+              <h3>Private Services</h3>
+              <p>Consultoría, concierge, especialistas y servicios con tratamiento exclusivo.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured maison listings</h2>
+            <p>Une mise en page éditoriale avec grandes images, blocs asymétriques et une aura premium plus forte.</p>
+          </div>
+          <a href="#" class="link-more">Explorar edición</a>
+        </div>
+
+        <div class="listings-layout">
+          <div class="feature-stack">
+            <article class="product-card">
+              <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1400&q=80')">
+                <div class="tag">Signature</div>
+                <button class="fav" type="button" aria-label="Save listing"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              </div>
+              <div class="product-body">
+                <div class="product-meta"><span>Automotive</span><span>CDMX</span></div>
+                <h3>Aston Martin DBX Maison Edition</h3>
+                <p class="product-desc">Une fiche pensée pour renforcer la désirabilité visuelle et soutenir des ventes de plus haute valeur.</p>
+                <div class="product-bottom">
+                  <div class="price">$5,280,000</div>
+                  <button class="ghost-btn" type="button">Ver detalle</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="feature-stack">
+            <article class="product-card">
+              <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80')">
+                <div class="tag">Private listing</div>
+                <button class="fav" type="button" aria-label="Save listing"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+              </div>
+              <div class="product-body">
+                <div class="product-meta"><span>Residences</span><span>Polanco</span></div>
+                <h3>Sky residence with sculpted terrace</h3>
+                <p class="product-desc">Arquitectura, luz y acabados premium con una narrativa visuelle de maison internationale.</p>
+                <div class="product-bottom">
+                  <div class="price">$27,900,000</div>
+                  <button class="ghost-btn" type="button">Ver detalle</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <aside class="editorial-panel">
+            <div>
+              <div class="panel-label" style="color: rgba(255, 255, 255, 0.62);">Maison note</div>
+              <h3>Aquí ya se siente una verdadera marca de lujo internacional.</h3>
+              <p>Le header est plus minimal, le hero plus fort, les blocs plus éditoriaux et l’ensemble monte clairement en gamme.</p>
+            </div>
+            <div class="mini-quote">
+              <strong>Direction artistique</strong>
+              Plus exclusif, plus premium, plus désirable. Exactement le type de présence visuelle qui aide à mieux vendre des biens, objets et services haut de gamme.
+            </div>
+          </aside>
+        </div>
+
+        <section class="banner" aria-label="Value proposition banner">
+          <div>
+            <h2>V3 maison privée: plus forte, plus éditoriale, plus internationale.</h2>
+            <p>Cette direction pousse l’identité encore plus loin: hero spectaculaire, composition asymétrique et ton de marque nettement plus rare.</p>
+          </div>
+          <div class="banner-box">
+            <div class="panel-label" style="color: rgba(255, 255, 255, 0.62);">Pourquoi ça vend mieux</div>
+            <div><i class="fa-solid fa-badge-check" aria-hidden="true"></i> Plus de crédibilité pour des listings à forte valeur</div>
+            <div><i class="fa-solid fa-camera-retro" aria-hidden="true"></i> Photographie hero et mise en scène plus premium</div>
+            <div><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Ton de marque proche d’une maison privée internationale</div>
+            <div><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Image de confiance et de statut plus forte</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-shell">
+      <div>© 2026 Al Easy Store · Maison Privée marketplace concept</div>
+      <div>Automotive · Residences · Collections · Private Services · Private Desk</div>
+    </div>
+  </footer>
+
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
+    }
+  </style>
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('primary-nav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function () {
+        const isOpen = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      });
+
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open menu');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
