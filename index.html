@@ -64,7 +64,7 @@
     .header-main {
       min-height: 82px;
       display: grid;
-      grid-template-columns: 210px 1fr auto auto;
+      grid-template-columns: 340px 1fr auto auto;
       align-items: center;
       gap: 18px;
     }
@@ -76,6 +76,7 @@
       font-weight: 800;
       letter-spacing: -.05em;
       font-size: 24px;
+      white-space: nowrap;
     }
     .brand-logo {
       width: 58px;
@@ -699,7 +700,7 @@
     .mobile-sticky .orange { background: var(--orange); }
 
     @media (max-width: 1050px) {
-      .header-main { grid-template-columns: 190px 1fr auto; padding: 14px 0; }
+      .header-main { grid-template-columns: 300px 1fr auto; padding: 14px 0; }
       .actions { grid-column: 1 / -1; justify-content: space-between; }
       .hero-grid { grid-template-columns: 1fr; }
       .side-column { grid-template-columns: 1fr 1fr; }
@@ -720,7 +721,7 @@
       .brand {
         justify-content: start;
         min-width: 0;
-        font-size: 21px;
+        font-size: clamp(16px, 4.6vw, 21px);
       }
       .brand-logo {
         width: 52px;
