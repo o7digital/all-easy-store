@@ -1,1459 +1,1158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>All Easy Store | International Market</title>
-  <meta name="description" content="All Easy Store, international market: cars, homes, collections, and services for buyers and sellers across Mexico and beyond." />
-  <meta name="theme-color" content="#0c0b09" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>All Easy Store México | Hero slider con foto</title>
+  <meta name="description" content="All Easy Store México: tienda online con productos útiles, precios claros y atención cercana. Preview con hero slider fotográfico." />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
     :root {
-      --bg: #f6f1e8;
-      --sand: #ece0cf;
-      --paper: #faf7f2;
-      --ink: #14110e;
-      --muted: #6e645b;
-      --line: rgba(20, 17, 14, 0.12);
-      --gold: #b88949;
-      --gold-2: #d7b27d;
-      --dark: #0c0b09;
-      --card: rgba(255, 255, 255, 0.78);
-      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.08);
-      --shadow-strong: 0 30px 90px rgba(0, 0, 0, 0.14);
-      --radius-xl: 34px;
-      --radius-lg: 28px;
-      --radius-md: 20px;
-      --radius-sm: 12px;
-      --max: 1440px;
-      --section-gap: clamp(2.2rem, 5vw, 4.2rem);
-      --focus: 0 0 0 3px rgba(184, 137, 73, 0.35);
+      --cream: #fbf5ea;
+      --paper: #fffaf2;
+      --white: #ffffff;
+      --ink: #1f2328;
+      --muted: #68707a;
+      --line: #e5dacb;
+      --orange: #f47b20;
+      --orange-2: #de6414;
+      --blue: #173559;
+      --green: #0f8f5f;
+      --shadow: 0 22px 54px rgba(56, 42, 26, .11);
+      --shadow-sm: 0 12px 28px rgba(56, 42, 26, .08);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-family: "Manrope", system-ui, sans-serif;
       color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(184, 137, 73, 0.12), transparent 24%),
-        linear-gradient(180deg, #fbf8f3 0%, #f5eee4 54%, #f0e7dc 100%);
-      line-height: 1.5;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
+      background: linear-gradient(180deg, var(--cream), #fff 44%, #fbf5ea 100%);
+      overflow-x: hidden;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .wrap { width: min(1200px, calc(100% - 32px)); margin: 0 auto; }
 
-    a, button, input, select {
-      transition: all 0.24s ease;
+    .top-message {
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
     }
-
-    :focus-visible {
-      outline: none;
-      box-shadow: var(--focus);
-    }
-
-    .container {
-      width: min(var(--max), calc(100% - 44px));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      background: #0c0b09;
-      color: rgba(255, 255, 255, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.83rem;
-    }
-
-    .topbar-inner {
-      min-height: 40px;
+    .top-message .wrap {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      align-items: center;
+      min-height: 40px;
+      gap: 20px;
     }
+    .top-message strong { color: #ffd05a; }
+    .top-message span { opacity: .85; }
 
     .header {
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(18px);
-      background: rgba(250, 247, 242, 0.78);
-      border-bottom: 1px solid var(--line);
+      background: rgba(251, 245, 234, .86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(229, 218, 203, .82);
     }
-
-    .header-inner {
-      min-height: 92px;
+    .header-main {
+      min-height: 82px;
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: 210px 1fr auto;
       align-items: center;
-      gap: 28px;
-      position: relative;
+      gap: 18px;
     }
-
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .brand-mark {
-      width: 54px;
-      height: 54px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #120f0b, #2b2218 48%, #b88949 130%);
-      color: white;
-      display: grid;
-      place-items: center;
-      box-shadow: var(--shadow-strong);
-      font-size: 1.15rem;
-      flex-shrink: 0;
-    }
-
-    .brand-name { font-size: 1.9rem; }
-
-    .brand-sub {
-      font-size: 0.72rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.68);
-      color: var(--ink);
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.95rem;
-      font-weight: 500;
-      position: relative;
-      opacity: 0.9;
-    }
-
-    .nav a:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    .nav a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: 0.26s ease;
-    }
-
-    .nav a:hover::after { transform: scaleX(1); }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
       gap: 12px;
+      font-family: "Sora", sans-serif;
+      font-weight: 800;
+      letter-spacing: -.05em;
+      font-size: 24px;
     }
-
-    .lang-switch {
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
       position: relative;
-      z-index: 70;
+      background: linear-gradient(145deg, #173559, #27649e);
+      box-shadow: 0 12px 24px rgba(23, 53, 89, .18);
+      overflow: hidden;
+    }
+    .brand-logo::before {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 9px;
+      background: var(--orange);
+      right: 6px;
+      bottom: 6px;
+    }
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: #ffd05a;
+      left: 8px;
+      top: 8px;
     }
 
-    .lang-button {
-      min-height: 48px;
-      padding: 0 14px;
-      border-radius: 999px;
+    .search {
+      position: relative;
+      width: 100%;
+    }
+    .search input {
+      width: 100%;
+      height: 50px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.68);
+      background: #fff;
+      border-radius: 16px;
+      padding: 0 52px 0 18px;
+      outline: none;
+      box-shadow: 0 10px 24px rgba(56,42,26,.05);
       color: var(--ink);
+    }
+    .search button {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      height: 38px;
+      min-width: 42px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--orange);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    .actions { display: flex; gap: 10px; align-items: center; }
+    .action {
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      border-radius: 14px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-weight: 600;
+      font-weight: 800;
+      color: #2e333a;
       cursor: pointer;
+      box-shadow: 0 8px 18px rgba(56,42,26,.05);
+    }
+    .action.primary {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+      box-shadow: 0 0 0 4px rgba(15,143,95,.13);
     }
 
-    .lang-button:hover {
-      transform: translateY(-1px);
+    .navline {
+      border-top: 1px solid rgba(229, 218, 203, .62);
     }
-
-    .lang-menu {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      min-width: 170px;
-      padding: 8px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(250, 247, 242, 0.98);
-      box-shadow: var(--shadow-soft);
-      display: none;
-      gap: 4px;
-      z-index: 60;
-    }
-
-    .lang-menu.open {
-      display: grid;
-    }
-
-    .lang-item {
-      width: 100%;
-      text-align: left;
-      border: none;
-      background: transparent;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-weight: 600;
-      color: var(--ink);
-      cursor: pointer;
-    }
-
-    .lang-item.active,
-    .lang-item:hover {
-      background: rgba(184, 137, 73, 0.16);
-    }
-
-    .icon-btn, .cta {
+    .navline .wrap {
       min-height: 48px;
-      border-radius: 999px;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+      gap: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-
-    .icon-btn {
-      width: 48px;
-      background: rgba(255, 255, 255, 0.62);
-      border: 1px solid var(--line);
-      color: var(--ink);
+    .navline .wrap::-webkit-scrollbar { display: none; }
+    .navline a {
+      white-space: nowrap;
+      font-weight: 800;
+      color: #47515b;
+      font-size: 14px;
     }
-
-    .icon-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .cta {
-      padding: 0 20px;
-      gap: 10px;
-      background: linear-gradient(135deg, #13100c, #2a2017 55%, #b88949 155%);
-      color: white;
-      border: none;
-      font-weight: 600;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.04);
-    }
+    .navline a.hot { color: var(--orange-2); }
 
     .hero {
       padding: 34px 0 26px;
     }
-
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.16fr 0.84fr;
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.05fr) 370px;
+      gap: 18px;
       align-items: stretch;
     }
 
-    .hero-main {
-      min-height: 840px;
-      border-radius: 42px;
-      overflow: hidden;
+    .slider-shell {
       position: relative;
-      box-shadow: var(--shadow-strong);
-      background:
-        linear-gradient(90deg, rgba(8, 8, 8, 0.86) 0%, rgba(8, 8, 8, 0.52) 40%, rgba(8, 8, 8, 0.16) 76%),
-        url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1900&q=80') center/cover no-repeat;
+      min-height: 540px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(229, 218, 203, .9);
+      box-shadow: var(--shadow);
+      background: #ddd;
     }
 
-    .hero-main::before {
-      content: '';
+    .slides {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(184, 137, 73, 0.14), transparent 35%, rgba(0, 0, 0, 0.22));
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity .65s ease, transform 1.2s ease;
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(16,25,36,.78) 0%, rgba(16,25,36,.52) 38%, rgba(16,25,36,.18) 72%, rgba(16,25,36,.12) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.28));
     }
 
-    .hero-copy {
+    .slide-content {
       position: relative;
-      z-index: 1;
-      padding: 78px 72px 64px;
-      min-height: 100%;
+      z-index: 2;
+      height: 100%;
+      max-width: 620px;
+      padding: clamp(28px, 4vw, 48px);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
+      color: #fff;
     }
-
-    .eyebrow {
+    .label {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
       width: fit-content;
-      padding: 10px 16px;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(10px);
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 0.84rem;
-      margin-bottom: 22px;
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #fff1d9;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+    .label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
     }
 
-    .hero-copy h1 {
-      font-size: clamp(4.3rem, 7vw, 8rem);
-      color: white;
-      max-width: 860px;
-      margin-bottom: 24px;
+    h1, h2, h3 {
+      font-family: "Sora", sans-serif;
+      margin: 0;
+      letter-spacing: -.055em;
+      line-height: 1.02;
     }
-
-    .hero-copy p {
-      max-width: 620px;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 1.12rem;
-      margin-bottom: 28px;
+    h1 {
+      font-size: clamp(42px, 5.7vw, 76px);
+      max-width: 720px;
     }
-
-    .hero-actions {
+    .lead {
+      margin: 18px 0 0;
+      max-width: 530px;
+      color: rgba(255,255,255,.86);
+      font-size: clamp(17px, 1.55vw, 21px);
+      line-height: 1.5;
+      font-weight: 650;
+    }
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 32px;
+      gap: 12px;
+      margin-top: 28px;
     }
-
-    .btn-light, .btn-dark {
-      min-height: 56px;
-      padding: 0 24px;
-      border-radius: 999px;
-      text-decoration: none;
+    .btn {
+      border: 0;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 15px;
+      font-weight: 900;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: .22s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.orange { background: var(--orange); color: #fff; box-shadow: 0 15px 28px rgba(244,123,32,.24); }
+    .btn.white { background: rgba(255,255,255,.92); color: var(--blue); border: 1px solid rgba(255,255,255,.95); }
+
+    .hero-proof {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      font-weight: 600;
+      max-width: 560px;
     }
-
-    .btn-light {
-      background: rgba(255, 255, 255, 0.94);
-      color: var(--dark);
+    .proof-item {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(8px);
+      border-radius: 17px;
+      padding: 13px;
     }
+    .proof-item b { display: block; color: #fff; font-size: 18px; }
+    .proof-item span { display: block; color: rgba(255,255,255,.75); font-size: 12px; font-weight: 800; margin-top: 2px; }
 
-    .btn-light:hover {
-      transform: translateY(-2px);
+    .slider-ui {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .slider-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .slider-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,.38);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .slider-dot.active {
+      width: 28px;
+      border-radius: 999px;
       background: #fff;
     }
-
-    .btn-dark {
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+    .slider-arrows {
+      display: flex;
+      gap: 8px;
+    }
+    .arrow-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      cursor: pointer;
       backdrop-filter: blur(10px);
+      font-size: 18px;
+      font-weight: 900;
     }
 
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.14);
-    }
-
-    .hero-stats {
+    .side-column {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 760px;
+      gap: 18px;
     }
-
-    .stat {
-      background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 24px;
-      padding: 18px 20px;
-      backdrop-filter: blur(16px);
-      color: white;
-      min-height: 124px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.75rem;
-      margin-bottom: 6px;
-      font-weight: 700;
-    }
-
-    .hero-side {
-      display: grid;
-      grid-template-rows: 1.05fr 0.95fr;
-      gap: 24px;
-    }
-
-    .side-card, .search-panel {
-      border-radius: 34px;
-      box-shadow: var(--shadow-strong);
+    .promo-card, .support-card {
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
       overflow: hidden;
       position: relative;
     }
-
-    .search-panel {
-      padding: 30px;
-      background: linear-gradient(180deg, rgba(250, 247, 242, 0.88), rgba(255, 255, 255, 0.72));
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      backdrop-filter: blur(20px);
+    .promo-card {
+      min-height: 258px;
+      background:
+        radial-gradient(circle at 95% 12%, rgba(244,123,32,.20), transparent 33%),
+        #ffffff;
     }
-
-    .panel-label {
-      color: var(--muted);
-      font-size: 0.82rem;
+    .promo-card .kicker {
+      color: var(--orange-2);
+      font-weight: 900;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: .06em;
       margin-bottom: 10px;
     }
-
-    .panel-title {
-      font-size: 2rem;
-      margin-bottom: 18px;
+    .promo-card h3 { font-size: 30px; line-height: 1.05; }
+    .promo-card p, .support-card p { color: var(--muted); font-weight: 650; line-height: 1.45; }
+    .support-card {
+      background: linear-gradient(135deg, #173559, #246097);
+      color: #fff;
+      min-height: 264px;
     }
+    .support-card p { color: rgba(255,255,255,.78); }
+    .support-card .btn { background: #fff; color: var(--blue); }
 
-    .search-card {
-      display: grid;
-      gap: 12px;
-    }
-
-    .search-card input,
-    .search-card select {
-      width: 100%;
-      height: 56px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.86);
-      padding: 0 16px;
-      font-size: 0.96rem;
-      outline: none;
-      color: var(--ink);
-    }
-
-    .search-card button {
-      height: 58px;
-      border: none;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #13100d, #2b2117 60%, #b88949 160%);
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .search-card button:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.03);
-    }
-
-    .side-card {
-      min-height: 380px;
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.7)),
-        url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-      color: white;
-      padding: 28px;
-      display: flex;
-      align-items: end;
-    }
-
-    .side-card h3 {
-      font-size: 2.2rem;
-      margin-bottom: 8px;
-    }
-
-    .side-card p {
-      color: rgba(255, 255, 255, 0.82);
-      max-width: 360px;
-    }
-
-    .section {
-      padding: var(--section-gap) 0 0;
-    }
-
+    .section { padding: 36px 0; }
     .section-head {
       display: flex;
-      justify-content: space-between;
       align-items: end;
-      gap: 20px;
-      margin-bottom: 24px;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 18px;
     }
-
-    .section-head h2 {
-      font-size: clamp(2.3rem, 4vw, 3.8rem);
+    .section h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      max-width: 760px;
     }
-
-    .section-head p {
+    .section-text {
       color: var(--muted);
-      max-width: 640px;
-      margin-top: 8px;
+      max-width: 560px;
+      line-height: 1.45;
+      font-weight: 650;
+      margin: 10px 0 0;
     }
-
-    .link-more {
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 600;
+    .view-all {
+      color: var(--orange-2);
+      font-weight: 900;
       white-space: nowrap;
     }
 
-    .link-more:hover {
-      color: #000;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-color: var(--gold);
-    }
-
-    .categories {
+    .category-row {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr 1fr;
-      gap: 22px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
     }
-
-    .category-card {
-      position: relative;
-      min-height: 300px;
-      border-radius: 34px;
-      overflow: hidden;
-      box-shadow: var(--shadow-strong);
-      padding: 30px;
-      display: flex;
-      align-items: end;
-      color: white;
+    .category {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 14px;
+      min-height: 152px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: .22s ease;
+    }
+    .category:hover, .category.active {
+      transform: translateY(-4px);
+      border-color: rgba(244,123,32,.55);
+    }
+    .category-visual {
+      height: 82px;
+      border-radius: 17px;
+      margin-bottom: 12px;
       background-size: cover;
       background-position: center;
-      isolation: isolate;
+      position: relative;
+      overflow: hidden;
     }
-
-    .category-card::before {
-      content: '';
+    .category-visual::after {
+      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72));
-      z-index: -1;
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.14));
     }
+    .category b { display: block; font-weight: 900; color: #252b31; }
+    .category span { display: block; color: var(--muted); font-size: 13px; font-weight: 700; margin-top: 2px; }
 
-    .category-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.16);
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
-
-    .category-card h3 {
-      font-size: 2.2rem;
+    .product-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: .22s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 38px rgba(56,42,26,.12);
+    }
+    .image-box {
+      height: 220px;
+      margin: 12px;
+      border-radius: 19px;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+    .image-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.12));
+    }
+    .discount {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      z-index: 2;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 7px 10px;
+    }
+    .product-info { padding: 2px 16px 16px; }
+    .product-info h3 {
+      font-family: "Manrope";
+      letter-spacing: -.025em;
+      line-height: 1.18;
+      font-size: 18px;
       margin-bottom: 8px;
     }
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .stars { color: #e8a400; }
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .price {
+      font-family: "Sora";
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.06em;
+      color: #15191e;
+    }
+    .old {
+      color: #9ca4ad;
+      text-decoration: line-through;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .buy {
+      width: 100%;
+      border: 0;
+      min-height: 44px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .buy:hover { background: var(--orange-2); }
 
-    .category-card p { color: rgba(255, 255, 255, 0.82); }
-
-    .listings-layout {
+    .trust-grid {
       display: grid;
-      grid-template-columns: 1.05fr 1.05fr 0.9fr;
-      gap: 24px;
-      align-items: start;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
-
-    .feature-stack {
-      display: grid;
-      gap: 24px;
+    .trust-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
     }
-
-    .product-card {
-      background: rgba(255, 255, 255, 0.68);
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(18px);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--shadow-strong);
-    }
-
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 34px 98px rgba(0, 0, 0, 0.16);
-    }
-
-    .product-media {
-      height: 360px;
-      background-size: cover;
-      background-position: center;
+    .trust-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      margin-bottom: 13px;
+      background: linear-gradient(145deg, #eef4fb, #dfeafa);
       position: relative;
     }
-
-    .product-media::after {
-      content: '';
+    .trust-icon::after {
+      content: "";
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.34));
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      background: var(--blue);
+      top: 13px;
+      left: 13px;
     }
+    .trust-card:nth-child(2) .trust-icon { background: linear-gradient(145deg, #edf9f3, #daf3e8); }
+    .trust-card:nth-child(2) .trust-icon::after { background: var(--green); border-radius: 50%; }
+    .trust-card:nth-child(3) .trust-icon { background: linear-gradient(145deg, #fff6df, #ffe8ab); }
+    .trust-card:nth-child(3) .trust-icon::after { background: var(--orange); }
+    .trust-card:nth-child(4) .trust-icon { background: linear-gradient(145deg, #f2ecff, #e2d6ff); }
+    .trust-card:nth-child(4) .trust-icon::after { background: #755ac7; }
 
-    .tag {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 1;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.88);
-      color: #111;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .trust-card h3 {
+      font-family: "Manrope";
+      letter-spacing: -.025em;
+      font-size: 19px;
+      margin-bottom: 8px;
     }
-
-    .fav {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 1;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.84);
-      color: #111;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-    }
-
-    .fav:hover {
-      transform: scale(1.04);
-      background: white;
-    }
-
-    .product-body {
-      padding: 24px;
-    }
-
-    .product-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
+    .trust-card p {
+      margin: 0;
       color: var(--muted);
-      font-size: 0.84rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 10px;
+      font-weight: 650;
+      line-height: 1.45;
     }
 
-    .product-body h3 {
-      font-size: 2.1rem;
-      margin-bottom: 14px;
-    }
-
-    .product-desc {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .product-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-
-    .price {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--dark);
-    }
-
-    .ghost-btn {
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: white;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .ghost-btn:hover {
-      transform: translateY(-1px);
-      border-color: rgba(20, 17, 14, 0.3);
-    }
-
-    .editorial-panel {
+    .bottom-cta {
+      margin: 38px 0 0;
       border-radius: 34px;
-      overflow: hidden;
-      box-shadow: var(--shadow-strong);
-      background:
-        linear-gradient(180deg, rgba(17, 17, 17, 0.98), rgba(38, 30, 22, 0.96) 60%, rgba(184, 137, 73, 0.94) 150%);
-      color: white;
       padding: 34px;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 26px;
-    }
-
-    .editorial-panel h3 {
-      font-size: 3rem;
-      margin-bottom: 14px;
-    }
-
-    .editorial-panel p {
-      color: rgba(255, 255, 255, 0.78);
-    }
-
-    .mini-quote {
-      padding-top: 22px;
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 1rem;
-    }
-
-    .mini-quote strong {
-      display: block;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(255, 255, 255, 0.56);
-      margin-bottom: 10px;
-    }
-
-    .banner {
-      margin: clamp(2.2rem, 4vw, 3rem) 0 0;
-      border-radius: 36px;
-      padding: 52px;
       background:
-        linear-gradient(120deg, rgba(17, 17, 17, 0.97), rgba(44, 33, 22, 0.94) 60%, rgba(184, 137, 73, 0.92) 145%);
-      color: white;
-      box-shadow: var(--shadow-strong);
+        radial-gradient(circle at 88% 10%, rgba(255,194,51,.30), transparent 28%),
+        linear-gradient(135deg, #fff, #f7ead6);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
+      grid-template-columns: 1fr auto;
       align-items: center;
+      gap: 22px;
     }
+    .bottom-cta h2 { font-size: clamp(30px, 4vw, 50px); }
+    .bottom-cta p { color: var(--muted); font-weight: 650; line-height: 1.45; max-width: 640px; }
 
-    .banner h2 {
-      font-size: clamp(2.5rem, 4vw, 4.6rem);
-      margin-bottom: 14px;
-    }
-
-    .banner p {
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 600px;
-    }
-
-    .banner-box {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 26px;
-      padding: 26px;
-      backdrop-filter: blur(14px);
-      display: grid;
-      gap: 14px;
-      color: rgba(255, 255, 255, 0.88);
-    }
-
-    .footer {
-      padding: 56px 0 28px;
-    }
-
-    .footer-shell {
-      border-top: 1px solid var(--line);
-      padding-top: 28px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
+    footer {
+      padding: 42px 0 32px;
       color: var(--muted);
-      font-size: 0.92rem;
-      flex-wrap: wrap;
+      font-weight: 650;
+    }
+    .footer-grid {
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+      display: grid;
+      grid-template-columns: 1.3fr repeat(3, .7fr);
+      gap: 20px;
+    }
+    footer h4 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 15px;
+    }
+    footer a {
+      display: block;
+      margin: 8px 0;
+      color: var(--muted);
+      font-weight: 750;
     }
 
-    @media (max-width: 1240px) {
-      .hero-grid,
-      .categories,
-      .listings-layout,
-      .banner {
-        grid-template-columns: 1fr 1fr;
-      }
+    .mobile-sticky {
+      display: none;
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 60;
+      background: rgba(23,53,89,.96);
+      color: #fff;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 18px 38px rgba(23,53,89,.25);
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .mobile-sticky a, .mobile-sticky button {
+      border: 0;
+      border-radius: 14px;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      padding: 12px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .mobile-sticky .orange { background: var(--orange); }
 
-      .listings-layout > :last-child,
-      .hero-side {
-        grid-column: span 2;
-      }
-
-      .hero-main { min-height: 760px; }
-      .hero-copy { padding: 56px 48px 48px; }
+    @media (max-width: 1050px) {
+      .header-main { grid-template-columns: 190px 1fr; padding: 14px 0; }
+      .actions { grid-column: 1 / -1; justify-content: space-between; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .side-column { grid-template-columns: 1fr 1fr; }
+      .category-row { grid-template-columns: repeat(3, 1fr); }
+      .product-grid, .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .bottom-cta { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
-    @media (max-width: 920px) {
-      .header-inner {
-        grid-template-columns: auto 1fr auto;
-        min-height: 74px;
-        gap: 12px;
+    @media (max-width: 720px) {
+      .top-message .wrap { justify-content: center; text-align: center; }
+      .top-message span { display: none; }
+      .header-main { grid-template-columns: 1fr; gap: 12px; }
+      .brand { justify-content: center; }
+      .actions { display: none; }
+      .slider-shell { min-height: 560px; }
+      .hero-buttons .btn { width: 100%; }
+      .hero-proof { grid-template-columns: 1fr; }
+      .side-column { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: start; }
+      .category-row { grid-template-columns: repeat(2, 1fr); }
+      .product-grid, .trust-grid { grid-template-columns: 1fr; }
+      .bottom-cta { padding: 24px; border-radius: 26px; }
+      .footer-grid { grid-template-columns: 1fr; padding-bottom: 76px; }
+      .mobile-sticky { display: grid; }
+      .slider-ui {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
       }
-
-      .menu-toggle { display: inline-flex; }
-
-      .nav {
-        position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
-        right: 0;
-        background: rgba(250, 247, 242, 0.98);
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        box-shadow: var(--shadow-soft);
-        padding: 14px;
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .nav.open { display: flex; }
-
-      .nav a {
-        padding: 10px 8px;
-        border-radius: 10px;
-      }
-
-      .nav a:hover {
-        background: rgba(184, 137, 73, 0.1);
-        transform: none;
-      }
-
-      .header-actions .cta {
-        display: none;
-      }
-
-      .lang-button {
-        min-height: 44px;
-        padding: 0 12px;
-      }
-
-      .hero-grid,
-      .categories,
-      .listings-layout,
-      .banner {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-main { min-height: auto; }
-
-      .hero-copy {
-        padding: 36px 24px;
-      }
-
-      .hero-copy h1 { font-size: clamp(2.9rem, 11vw, 4.1rem); }
-      .hero-copy p { font-size: 1rem; }
-      .hero-stats { grid-template-columns: 1fr; max-width: 100%; }
-
-      .section-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .listings-layout > :last-child,
-      .hero-side { grid-column: auto; }
-
-      .banner { padding: 26px 20px; }
-    }
-
-    @media (max-width: 640px) {
-      .container { width: min(var(--max), calc(100% - 28px)); }
-
-      .topbar-inner {
-        flex-direction: column;
-        justify-content: center;
-        padding: 10px 0;
-        text-align: center;
-      }
-
-      .brand-name { font-size: 1.5rem; }
-      .brand-sub { font-size: 0.64rem; letter-spacing: 0.18em; }
-
-      .hero-copy,
-      .search-panel,
-      .banner,
-      .editorial-panel {
-        padding: 22px 18px;
-      }
-
-      .hero-copy h1 { font-size: 2.65rem; }
-      .section-head h2 { font-size: 2.35rem; }
-      .product-body h3,
-      .side-card h3,
-      .panel-title { font-size: 1.8rem; }
-      .editorial-panel h3 { font-size: 2.2rem; }
-      .product-media { height: 280px; }
-      .product-bottom { flex-wrap: wrap; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
-      }
+      h1 { font-size: clamp(34px, 11vw, 52px); }
     }
   </style>
 </head>
+
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div>International market · cars, homes, collections, and services for everyone</div>
-      <div>Mexico-wide reach · trusted listings · clear and modern experience</div>
+  <div class="top-message">
+    <div class="wrap">
+      <div><strong>Ofertas de temporada</strong> · Productos útiles para casa, trabajo y viaje</div>
+      <span>Pago seguro · Atención por WhatsApp · Precios en MXN</span>
     </div>
   </div>
 
   <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#" aria-label="All Easy Store home">
-        <div class="brand-mark"><i class="fa-solid fa-diamond" aria-hidden="true"></i></div>
-        <div>
-          <div class="brand-name">All Easy Store</div>
-          <div class="brand-sub">International Market</div>
-        </div>
+    <div class="wrap header-main">
+      <a class="brand" href="#">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span>All Easy</span>
       </a>
 
-      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-      </button>
+      <form class="search">
+        <input id="search" type="search" placeholder="Buscar productos, categorías o promociones" />
+        <button type="submit" aria-label="Buscar">↵</button>
+      </form>
 
-      <nav class="nav" id="primary-nav" aria-label="Main navigation">
-        <a href="#">Home</a>
-        <a href="#">Automotive</a>
-        <a href="#">Residences</a>
-        <a href="#">Collections</a>
-        <a href="#">Private Services</a>
-        <a href="#">Private Desk</a>
-      </nav>
-
-      <div class="header-actions">
-        <div class="lang-switch">
-          <button class="lang-button" id="lang-button" aria-expanded="false" aria-controls="lang-menu" aria-label="Language selector">
-            EN <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
-          </button>
-          <div class="lang-menu" id="lang-menu">
-            <button class="lang-item active" type="button" data-lang="en">English</button>
-            <button class="lang-item" type="button" data-lang="es">Español</button>
-          </div>
-        </div>
-        <a class="icon-btn" href="#" aria-label="Favorites"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
-        <a class="icon-btn" href="#" aria-label="Shopping bag"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i></a>
-        <a class="cta" href="#"><i class="fa-solid fa-plus" aria-hidden="true"></i> Publish</a>
+      <div class="actions">
+        <a class="action" href="https://wa.me/525500000000" target="_blank" rel="noreferrer"><span class="dot"></span> WhatsApp</a>
+        <button class="action primary" type="button">Carrito · <span id="cartCount">0</span></button>
       </div>
     </div>
+
+    <nav class="navline">
+      <div class="wrap">
+        <a class="hot" href="#ofertas">Ofertas</a>
+        <a href="#categorias">Hogar</a>
+        <a href="#categorias">Tecnología</a>
+        <a href="#categorias">Belleza</a>
+        <a href="#categorias">Auto y viaje</a>
+        <a href="#confianza">Envíos</a>
+        <a href="#confianza">Pago seguro</a>
+      </div>
+    </nav>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <section class="hero-main" aria-label="Hero section with elevated positioning">
-            <div class="hero-copy">
-              <div class="eyebrow"><i class="fa-solid fa-crown" aria-hidden="true"></i> International digital marketplace</div>
-              <h1>An international market to buy and sell with stronger visibility.</h1>
-              <p>This V3 feels more global, more modern, and more reliable. The site is built for everyday transactions across Mexico: cars, properties, products, and services in one clear marketplace.</p>
-              <div class="hero-actions">
-                <a href="#" class="btn-light"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Explore listings</a>
-                <a href="#" class="btn-dark"><i class="fa-solid fa-play" aria-hidden="true"></i> View platform experience</a>
-              </div>
-              <div class="hero-stats">
-                <div class="stat"><strong>+52K</strong><span>Active listings with stronger visibility and buyer reach</span></div>
-                <div class="stat"><strong>+21K</strong><span>Clients and sellers with a stronger, more trusted profile</span></div>
-                <div class="stat"><strong>99.4%</strong><span>Satisfaction across supported transactions</span></div>
-              </div>
-            </div>
-          </section>
-
-          <aside class="hero-side" aria-label="Hero side panels">
-            <section class="search-panel">
-              <div class="panel-label">Smart search desk</div>
-              <h2 class="panel-title">Find a vehicle, home, product, or service in minutes</h2>
-              <form class="search-card" action="#" method="get">
-                <label class="sr-only" for="search-query">Search</label>
-                <input id="search-query" type="text" placeholder="What would you like to discover?" />
-
-                <label class="sr-only" for="search-category">Category</label>
-                <select id="search-category">
-                  <option>All categories</option>
-                  <option>Automotive</option>
-                  <option>Residences</option>
-                  <option>Collections</option>
-                  <option>Private Services</option>
-                </select>
-
-                <label class="sr-only" for="search-city">City</label>
-                <select id="search-city">
-                  <option>City / Area</option>
-                  <option>CDMX</option>
-                  <option>Monterrey</option>
-                  <option>Guadalajara</option>
-                  <option>Riviera Maya</option>
-                </select>
-
-                <button type="submit">Explore listings</button>
-              </form>
-            </section>
-
-            <article class="side-card">
-              <div>
-                <div class="panel-label" style="color: rgba(255, 255, 255, 0.64);">Top picks</div>
-                <h3>Homes and opportunities with clear value and strong market appeal.</h3>
-                <p>A side feature block designed to highlight demand-driven listings for a broad audience.</p>
+      <div class="wrap hero-grid">
+        <div class="slider-shell">
+          <div class="slides">
+            <article class="slide active" style="background-image:url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80');">
+              <div class="slide-content">
+                <div class="label">Tienda online para México</div>
+                <h1>Comprar fácil, pagar claro y recibir sin vueltas.</h1>
+                <p class="lead">
+                  Productos prácticos para casa, tecnología, belleza y movilidad.
+                  Una tienda moderna, cercana y confiable para comprar desde el celular.
+                </p>
+                <div class="hero-buttons">
+                  <a class="btn orange" href="#ofertas">Ver ofertas de hoy</a>
+                  <a class="btn white" href="#categorias">Explorar categorías</a>
+                </div>
+                <div class="hero-proof">
+                  <div class="proof-item"><b>MXN</b><span>Precios claros</span></div>
+                  <div class="proof-item"><b>24/7</b><span>Compra online</span></div>
+                  <div class="proof-item"><b>Soporte</b><span>Por WhatsApp</span></div>
+                </div>
               </div>
             </article>
-          </aside>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Market categories</h2>
-            <p>Category blocks with clear hierarchy, strong photography, and a structure built for national scale and daily transactions.</p>
-          </div>
-          <a href="#" class="link-more">View categories</a>
-        </div>
-
-        <div class="categories">
-          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80')">
-            <div>
-              <h3>Automotive</h3>
-              <p>Cars, SUVs, sedans, and motorcycles with strong demand across major Mexican cities.</p>
-            </div>
-          </article>
-
-          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1400&q=80')">
-            <div>
-              <h3>Residences</h3>
-              <p>Apartments, houses, and investment properties with clear details and trusted information.</p>
-            </div>
-          </article>
-
-          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1493666438817-866a91353ca9?auto=format&fit=crop&w=1400&q=80')">
-            <div>
-              <h3>Collections</h3>
-              <p>Selected products, technology, and lifestyle items aligned with real buyer demand.</p>
-            </div>
-          </article>
-
-          <article class="category-card" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1400&q=80')">
-            <div>
-              <h3>Private Services</h3>
-              <p>Consulting, specialist support, and practical services for individuals and businesses.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Featured listings</h2>
-            <p>A clear layout with strong visuals, asymmetric blocks, and better readability for faster decision-making.</p>
-          </div>
-          <a href="#" class="link-more">Explore listings</a>
-        </div>
-
-        <div class="listings-layout">
-          <div class="feature-stack">
-            <article class="product-card">
-              <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1400&q=80')">
-                <div class="tag">Featured</div>
-                <button class="fav" type="button" aria-label="Save listing"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1400&q=80');">
+              <div class="slide-content">
+                <div class="label">Hogar y tecnología</div>
+                <h1>Ofertas que sí se entienden desde el primer vistazo.</h1>
+                <p class="lead">
+                  Precio antes y ahora, beneficios visibles y una experiencia mucho más cercana que una tienda de lujo fría.
+                </p>
+                <div class="hero-buttons">
+                  <a class="btn orange" href="#ofertas">Comprar ahora</a>
+                  <a class="btn white" href="#confianza">Ver beneficios</a>
+                </div>
+                <div class="hero-proof">
+                  <div class="proof-item"><b>Promo</b><span>Descuentos visibles</span></div>
+                  <div class="proof-item"><b>Seguro</b><span>Checkout confiable</span></div>
+                  <div class="proof-item"><b>Rápido</b><span>Menos fricción</span></div>
+                </div>
               </div>
-              <div class="product-body">
-                <div class="product-meta"><span>Automotive</span><span>CDMX</span></div>
-                <h3>Aston Martin DBX 2026</h3>
-                <p class="product-desc">A listing designed to improve clarity, trust, and buyer intent with key details at a glance.</p>
-                <div class="product-bottom">
-                  <div class="price">$5,280,000</div>
-                  <button class="ghost-btn" type="button">View details</button>
+            </article>
+
+            <article class="slide" style="background-image:url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80');">
+              <div class="slide-content">
+                <div class="label">Compra con confianza</div>
+                <h1>Una tienda más humana, moderna y lista para vender.</h1>
+                <p class="lead">
+                  Diseño accesible, visual fuerte y atención por WhatsApp visible para cerrar mejor con público amplio en México.
+                </p>
+                <div class="hero-buttons">
+                  <a class="btn orange" href="#ofertas">Ver productos</a>
+                  <a class="btn white" href="https://wa.me/525500000000" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+                </div>
+                <div class="hero-proof">
+                  <div class="proof-item"><b>Apoyo</b><span>Atención cercana</span></div>
+                  <div class="proof-item"><b>Entrega</b><span>Rastreable</span></div>
+                  <div class="proof-item"><b>Compra</b><span>Fácil en móvil</span></div>
                 </div>
               </div>
             </article>
           </div>
 
-          <div class="feature-stack">
-            <article class="product-card">
-              <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80')">
-                <div class="tag">New listing</div>
-                <button class="fav" type="button" aria-label="Save listing"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
-              </div>
-              <div class="product-body">
-                <div class="product-meta"><span>Residences</span><span>Polanco</span></div>
-                <h3>Sky residence with sculpted terrace</h3>
-                <p class="product-desc">Architecture, natural light, and practical layout details presented for confident purchase decisions.</p>
-                <div class="product-bottom">
-                  <div class="price">$27,900,000</div>
-                  <button class="ghost-btn" type="button">View details</button>
-                </div>
-              </div>
-            </article>
+          <div class="slider-ui">
+            <div class="slider-dots">
+              <button class="slider-dot active" data-slide="0" aria-label="Ir al slide 1"></button>
+              <button class="slider-dot" data-slide="1" aria-label="Ir al slide 2"></button>
+              <button class="slider-dot" data-slide="2" aria-label="Ir al slide 3"></button>
+            </div>
+            <div class="slider-arrows">
+              <button class="arrow-btn" id="prevSlide" aria-label="Slide anterior">‹</button>
+              <button class="arrow-btn" id="nextSlide" aria-label="Slide siguiente">›</button>
+            </div>
           </div>
-
-          <aside class="editorial-panel">
-            <div>
-              <div class="panel-label" style="color: rgba(255, 255, 255, 0.62);">Platform note</div>
-              <h3>This now feels like a true international market platform.</h3>
-              <p>The header is clearer, the hero is stronger, and the full composition improves trust and usability for broad market adoption.</p>
-            </div>
-            <div class="mini-quote">
-              <strong>Visual direction</strong>
-              <span id="mini-quote-text">Clearer, stronger, and more modern. Exactly the kind of presence that helps sell vehicles, homes, products, and services at scale.</span>
-            </div>
-          </aside>
         </div>
 
-        <section class="banner" aria-label="Value proposition banner">
+        <aside class="side-column">
+          <article class="promo-card">
+            <div class="kicker">Semana de lanzamiento</div>
+            <h3>Ahora con hero slider fotográfico.</h3>
+            <p>
+              Se siente más vivo, más retail et plus crédible pour le client. On garde le côté accessible et vendeur.
+            </p>
+            <a class="btn orange" href="#ofertas">Comprar ahora</a>
+          </article>
+
+          <article class="support-card">
+            <h3>¿Tienes dudas antes de pagar?</h3>
+            <p>
+              Botón de WhatsApp visible para ayudar al cliente, bajar la fricción y cerrar más ventas.
+            </p>
+            <a class="btn" href="https://wa.me/525500000000" target="_blank" rel="noreferrer">Hablar por WhatsApp</a>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="categorias">
+      <div class="wrap">
+        <div class="section-head">
           <div>
-            <h2>V3 international market: stronger, clearer, and more scalable.</h2>
-            <p>This direction pushes the platform forward: a strong hero, asymmetrical composition, and a tone designed for broad market trust.</p>
+            <h2>Categorías claras, sin complicar la compra.</h2>
+            <p class="section-text">
+              Menos “galería de lujo”, más tienda online confiable. El cliente entiende rápido qué puede comprar.
+            </p>
           </div>
-          <div class="banner-box">
-            <div class="panel-label" style="color: rgba(255, 255, 255, 0.62);">Why it performs better</div>
-            <div><i class="fa-solid fa-badge-check" aria-hidden="true"></i> More credibility for listings across categories</div>
-            <div><i class="fa-solid fa-camera-retro" aria-hidden="true"></i> Stronger hero photography and clearer product focus</div>
-            <div><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Brand tone aligned with an international market</div>
-            <div><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Stronger trust and conversion potential</div>
+          <a class="view-all" href="#ofertas">Ver ofertas →</a>
+        </div>
+
+        <div class="category-row">
+          <article class="category active">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Todo</b>
+            <span>Los más buscados</span>
+          </article>
+          <article class="category">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Hogar</b>
+            <span>Cocina, orden, limpieza</span>
+          </article>
+          <article class="category">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Tecnología</b>
+            <span>Gadgets y accesorios</span>
+          </article>
+          <article class="category">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Belleza</b>
+            <span>Cuidado personal</span>
+          </article>
+          <article class="category">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Auto y viaje</b>
+            <span>Accesorios prácticos</span>
+          </article>
+          <article class="category">
+            <div class="category-visual" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=700&q=80');"></div>
+            <b>Ofertas</b>
+            <span>Promos de temporada</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ofertas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Ofertas destacadas</h2>
+            <p class="section-text">
+              Produits avec vraies photos placeholder dans un style plus réaliste pour la présentation client.
+            </p>
           </div>
-        </section>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">-18%</span>
+            </div>
+            <div class="product-info">
+              <h3>Proyector Mini HD para casa</h3>
+              <div class="meta"><span class="stars">★★★★★</span><span>Envío rastreable</span></div>
+              <div class="price-line"><span class="price">$699</span><span class="old">$849</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Top venta</span>
+            </div>
+            <div class="product-info">
+              <h3>Audífonos Bluetooth compactos</h3>
+              <div class="meta"><span class="stars">★★★★★</span><span>Batería larga</span></div>
+              <div class="price-line"><span class="price">$299</span><span class="old">$399</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Oferta</span>
+            </div>
+            <div class="product-info">
+              <h3>Licuadora portátil USB</h3>
+              <div class="meta"><span class="stars">★★★★☆</span><span>Uso diario</span></div>
+              <div class="price-line"><span class="price">$389</span><span class="old">$479</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Nuevo</span>
+            </div>
+            <div class="product-info">
+              <h3>Lámpara LED recargable</h3>
+              <div class="meta"><span class="stars">★★★★☆</span><span>Casa y oficina</span></div>
+              <div class="price-line"><span class="price">$219</span><span class="old">$299</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Práctico</span>
+            </div>
+            <div class="product-info">
+              <h3>Soporte magnético para auto</h3>
+              <div class="meta"><span class="stars">★★★★★</span><span>Instalación fácil</span></div>
+              <div class="price-line"><span class="price">$179</span><span class="old">$249</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1522338140262-f46f5913618a?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">-22%</span>
+            </div>
+            <div class="product-info">
+              <h3>Cepillo alisador compacto</h3>
+              <div class="meta"><span class="stars">★★★★☆</span><span>Cuidado personal</span></div>
+              <div class="price-line"><span class="price">$459</span><span class="old">$589</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Nuevo</span>
+            </div>
+            <div class="product-info">
+              <h3>Bocina Bluetooth compacta</h3>
+              <div class="meta"><span class="stars">★★★★★</span><span>Sonido portátil</span></div>
+              <div class="price-line"><span class="price">$349</span><span class="old">$449</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="image-box" style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80');">
+              <span class="discount">Hogar</span>
+            </div>
+            <div class="product-info">
+              <h3>Organizador plegable de cocina</h3>
+              <div class="meta"><span class="stars">★★★★☆</span><span>Ahorra espacio</span></div>
+              <div class="price-line"><span class="price">$249</span><span class="old">$329</span></div>
+              <button class="buy">Agregar al carrito</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="confianza">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Antes de comprar, el cliente tiene que confiar.</h2>
+            <p class="section-text">
+              Para una audiencia amplia, conviene explicar pago, entrega, soporte y cambios desde el inicio.
+            </p>
+          </div>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card">
+            <div class="trust-icon"></div>
+            <h3>Pago seguro</h3>
+            <p>Mensajes claros durante el checkout y confirmación del pedido.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon"></div>
+            <h3>Atención por WhatsApp</h3>
+            <p>Soporte humano para resolver dudas antes de pagar.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon"></div>
+            <h3>Envío rastreable</h3>
+            <p>Información de entrega fácil de entender desde el celular.</p>
+          </article>
+          <article class="trust-card">
+            <div class="trust-icon"></div>
+            <h3>Cambios claros</h3>
+            <p>Políticas visibles, simples y sin letra chiquita.</p>
+          </article>
+        </div>
+
+        <div class="bottom-cta">
+          <div>
+            <h2>Una versión más viva, más retail y más creíble.</h2>
+            <p>
+              Conservamos la base que funciona, ahora con un hero slider fotográfico para que la tienda se sienta lista para vender.
+            </p>
+          </div>
+          <a class="btn orange" href="#ofertas">Ver ofertas</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-shell">
-      <div>© 2026 All Easy Store · International market platform concept</div>
-      <div>Automotive · Residences · Collections · Private Services · Private Desk</div>
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <a class="brand" href="#">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span>All Easy</span>
+        </a>
+        <p>Compra fácil para todos. Productos útiles, precios claros y atención cercana en México.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#">Nuevos productos</a>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <a href="#confianza">Envíos</a>
+        <a href="#confianza">Cambios</a>
+        <a href="#confianza">Pago seguro</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="#">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+      </div>
     </div>
   </footer>
 
-  <style>
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-      white-space: nowrap;
-    }
-  </style>
+  <div class="mobile-sticky">
+    <a class="orange" href="#ofertas">Ver ofertas</a>
+    <button type="button">Carrito · <span id="cartCountMobile">0</span></button>
+  </div>
 
   <script>
-    (function () {
-      const toggle = document.getElementById('menu-toggle');
-      const nav = document.getElementById('primary-nav');
-      const langButton = document.getElementById('lang-button');
-      const langMenu = document.getElementById('lang-menu');
-      const langItems = Array.from(document.querySelectorAll('.lang-item'));
-      if (!toggle || !nav) return;
+    const slides = [...document.querySelectorAll('.slide')];
+    const dots = [...document.querySelectorAll('.slider-dot')];
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
 
-      const refs = {
-        html: document.documentElement,
-        topbarLeft: document.querySelector('.topbar-inner > div:first-child'),
-        topbarRight: document.querySelector('.topbar-inner > div:last-child'),
-        brandSub: document.querySelector('.brand-sub'),
-        nav: Array.from(document.querySelectorAll('#primary-nav a')),
-        cta: document.querySelector('.cta'),
-        eyebrow: document.querySelector('.eyebrow'),
-        heroTitle: document.querySelector('.hero-copy h1'),
-        heroDesc: document.querySelector('.hero-copy p'),
-        heroButtons: Array.from(document.querySelectorAll('.hero-actions a')),
-        heroStats: Array.from(document.querySelectorAll('.hero-stats .stat span')),
-        searchLabel: document.querySelector('.search-panel .panel-label'),
-        searchTitle: document.querySelector('.search-panel .panel-title'),
-        searchInput: document.getElementById('search-query'),
-        searchCategoryOptions: Array.from(document.querySelectorAll('#search-category option')),
-        searchCityFirst: document.querySelector('#search-city option:first-child'),
-        searchButton: document.querySelector('.search-card button'),
-        sideLabel: document.querySelector('.side-card .panel-label'),
-        sideTitle: document.querySelector('.side-card h3'),
-        sideDesc: document.querySelector('.side-card p'),
-        section1Title: document.querySelectorAll('.section-head h2')[0],
-        section1Desc: document.querySelectorAll('.section-head p')[0],
-        section1Link: document.querySelectorAll('.section-head .link-more')[0],
-        categoryTitles: Array.from(document.querySelectorAll('.categories .category-card h3')),
-        categoryDescs: Array.from(document.querySelectorAll('.categories .category-card p')),
-        section2Title: document.querySelectorAll('.section-head h2')[1],
-        section2Desc: document.querySelectorAll('.section-head p')[1],
-        section2Link: document.querySelectorAll('.section-head .link-more')[1],
-        listingTags: Array.from(document.querySelectorAll('.tag')),
-        listingTitles: Array.from(document.querySelectorAll('.feature-stack .product-body h3')),
-        listingDescs: Array.from(document.querySelectorAll('.feature-stack .product-desc')),
-        detailBtns: Array.from(document.querySelectorAll('.ghost-btn')),
-        editorialLabel: document.querySelector('.editorial-panel .panel-label'),
-        editorialTitle: document.querySelector('.editorial-panel h3'),
-        editorialDesc: document.querySelector('.editorial-panel p'),
-        quoteTitle: document.querySelector('.mini-quote strong'),
-        quoteDesc: document.getElementById('mini-quote-text'),
-        bannerTitle: document.querySelector('.banner h2'),
-        bannerDesc: document.querySelector('.banner p'),
-        bannerLabel: document.querySelector('.banner-box .panel-label'),
-        bannerItems: Array.from(document.querySelectorAll('.banner-box > div')).slice(1),
-        footerLeft: document.querySelector('.footer-shell > div:first-child'),
-        footerRight: document.querySelector('.footer-shell > div:last-child')
-      };
+    let slideIndex = 0;
+    let autoPlay;
 
-      const t = {
-        en: {
-          langCode: 'EN',
-          menuLabel: 'Language selector',
-          topbarLeft: 'International market · cars, homes, collections, and services for everyone',
-          topbarRight: 'Mexico-wide reach · trusted listings · clear and modern experience',
-          brandSub: 'International Market',
-          nav: ['Home', 'Automotive', 'Residences', 'Collections', 'Private Services', 'Private Desk'],
-          cta: 'Publish',
-          eyebrow: 'International digital marketplace',
-          heroTitle: 'An international market to buy and sell with stronger visibility.',
-          heroDesc: 'This V3 feels more global, more modern, and more reliable. The site is built for everyday transactions across Mexico: cars, properties, products, and services in one clear marketplace.',
-          heroButtons: ['Explore listings', 'View platform experience'],
-          heroStats: [
-            'Active listings with stronger visibility and buyer reach',
-            'Clients and sellers with a stronger, more trusted profile',
-            'Satisfaction across supported transactions'
-          ],
-          searchLabel: 'Smart search desk',
-          searchTitle: 'Find a vehicle, home, product, or service in minutes',
-          searchPlaceholder: 'What would you like to discover?',
-          searchCategoryOptions: ['All categories', 'Automotive', 'Residences', 'Collections', 'Private Services'],
-          searchCityFirst: 'City / Area',
-          searchButton: 'Explore listings',
-          sideLabel: 'Top picks',
-          sideTitle: 'Homes and opportunities with clear value and strong market appeal.',
-          sideDesc: 'A side feature block designed to highlight demand-driven listings for a broad audience.',
-          section1Title: 'Market categories',
-          section1Desc: 'Category blocks with clear hierarchy, strong photography, and a structure built for national scale and daily transactions.',
-          section1Link: 'View categories',
-          categoryTitles: ['Automotive', 'Residences', 'Collections', 'Private Services'],
-          categoryDescs: [
-            'Cars, SUVs, sedans, and motorcycles with strong demand across major Mexican cities.',
-            'Apartments, houses, and investment properties with clear details and trusted information.',
-            'Selected products, technology, and lifestyle items aligned with real buyer demand.',
-            'Consulting, concierge, specialists, and practical services for individuals and businesses.'
-          ],
-          section2Title: 'Featured listings',
-          section2Desc: 'A clear layout with strong visuals, asymmetric blocks, and better readability for faster decision-making.',
-          section2Link: 'Explore listings',
-          listingTags: ['Featured', 'New listing'],
-          listingTitles: ['Aston Martin DBX 2026', 'Sky residence with sculpted terrace'],
-          listingDescs: [
-            'A listing designed to improve clarity, trust, and buyer intent with key details at a glance.',
-            'Architecture, natural light, and practical layout details presented for confident purchase decisions.'
-          ],
-          detailBtn: 'View details',
-          editorialLabel: 'Platform note',
-          editorialTitle: 'This now feels like a true international market platform.',
-          editorialDesc: 'The header is clearer, the hero is stronger, and the full composition improves trust and usability for broad market adoption.',
-          quoteTitle: 'Visual direction',
-          quoteDesc: 'Clearer, stronger, and more modern. Exactly the kind of presence that helps sell vehicles, homes, products, and services at scale.',
-          bannerTitle: 'V3 international market: stronger, clearer, and more scalable.',
-          bannerDesc: 'This direction pushes the platform forward: a strong hero, asymmetrical composition, and a tone designed for broad market trust.',
-          bannerLabel: 'Why it performs better',
-          bannerItems: [
-            'More credibility for listings across categories',
-            'Stronger hero photography and clearer product focus',
-            'Brand tone aligned with an international market',
-            'Stronger trust and conversion potential'
-          ],
-          footerLeft: '© 2026 All Easy Store · International market platform concept',
-          footerRight: 'Automotive · Residences · Collections · Private Services · Private Desk'
-        },
-        es: {
-          langCode: 'ES',
-          menuLabel: 'Selector de idioma',
-          topbarLeft: 'Mercado internacional · autos, hogares, colecciones y servicios para todos',
-          topbarRight: 'Cobertura en todo México · publicaciones confiables · experiencia clara y moderna',
-          brandSub: 'Mercado Internacional',
-          nav: ['Inicio', 'Automóviles', 'Residencias', 'Colecciones', 'Servicios', 'Mesa Privada'],
-          cta: 'Publicar',
-          eyebrow: 'Mercado digital internacional',
-          heroTitle: 'Un mercado internacional para comprar y vender con mayor visibilidad.',
-          heroDesc: 'Esta V3 se siente más global, más moderna y más confiable. El sitio está pensado para transacciones diarias en México: autos, propiedades, productos y servicios en un solo mercado claro.',
-          heroButtons: ['Explorar publicaciones', 'Ver experiencia de la plataforma'],
-          heroStats: [
-            'Publicaciones activas con mayor visibilidad y alcance',
-            'Clientes y vendedores con un perfil más confiable',
-            'Satisfacción en transacciones gestionadas'
-          ],
-          searchLabel: 'Mesa inteligente de búsqueda',
-          searchTitle: 'Encuentra un vehículo, hogar, producto o servicio en minutos',
-          searchPlaceholder: '¿Qué te gustaría encontrar?',
-          searchCategoryOptions: ['Todas las categorías', 'Automóviles', 'Residencias', 'Colecciones', 'Servicios'],
-          searchCityFirst: 'Ciudad / Zona',
-          searchButton: 'Explorar publicaciones',
-          sideLabel: 'Destacados',
-          sideTitle: 'Hogares y oportunidades con valor claro y alta demanda.',
-          sideDesc: 'Un bloque lateral pensado para destacar publicaciones con demanda real y alcance masivo.',
-          section1Title: 'Categorías del mercado',
-          section1Desc: 'Bloques de categoría con jerarquía clara, buena fotografía y estructura para escala nacional.',
-          section1Link: 'Ver categorías',
-          categoryTitles: ['Automóviles', 'Residencias', 'Colecciones', 'Servicios'],
-          categoryDescs: [
-            'Autos, SUV, sedanes y motocicletas con fuerte demanda en las principales ciudades de México.',
-            'Departamentos, casas y propiedades de inversión con información clara y confiable.',
-            'Productos seleccionados, tecnología y estilo de vida alineados con la demanda real.',
-            'Consultoría, especialistas y servicios prácticos para personas y empresas.'
-          ],
-          section2Title: 'Publicaciones destacadas',
-          section2Desc: 'Una estructura clara con visuales fuertes y mejor lectura para decidir más rápido.',
-          section2Link: 'Explorar publicaciones',
-          listingTags: ['Destacado', 'Nueva publicación'],
-          listingTitles: ['Aston Martin DBX 2026', 'Residencia elevada con terraza escultórica'],
-          listingDescs: [
-            'Una publicación diseñada para mejorar claridad, confianza e intención de compra.',
-            'Arquitectura, luz natural y detalles prácticos presentados para decidir con confianza.'
-          ],
-          detailBtn: 'Ver detalle',
-          editorialLabel: 'Nota de plataforma',
-          editorialTitle: 'Ahora se siente como una verdadera plataforma de mercado internacional.',
-          editorialDesc: 'El encabezado es más claro, el hero más fuerte y la composición mejora confianza y usabilidad.',
-          quoteTitle: 'Dirección visual',
-          quoteDesc: 'Más clara, más fuerte y más moderna. Justo la presencia que ayuda a vender a gran escala.',
-          bannerTitle: 'V3 mercado internacional: más fuerte, más claro y más escalable.',
-          bannerDesc: 'Esta dirección empuja la plataforma hacia adelante: hero fuerte, composición asimétrica y tono pensado para confianza masiva.',
-          bannerLabel: 'Por qué funciona mejor',
-          bannerItems: [
-            'Más credibilidad para publicaciones en todas las categorías',
-            'Mejor fotografía hero y enfoque más claro del producto',
-            'Tono de marca alineado con un mercado internacional',
-            'Mayor confianza y potencial de conversión'
-          ],
-          footerLeft: '© 2026 All Easy Store · Concepto de plataforma de mercado internacional',
-          footerRight: 'Automóviles · Residencias · Colecciones · Servicios · Mesa Privada'
-        }
-      };
+    function showSlide(index) {
+      slideIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === slideIndex));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === slideIndex));
+    }
 
-      function applyLang(lang) {
-        const tr = t[lang] || t.en;
-        refs.html.lang = lang;
-        langButton.innerHTML = tr.langCode + ' <i class="fa-solid fa-angle-down" aria-hidden="true"></i>';
-        langButton.setAttribute('aria-label', tr.menuLabel);
-        refs.topbarLeft.textContent = tr.topbarLeft;
-        refs.topbarRight.textContent = tr.topbarRight;
-        refs.brandSub.textContent = tr.brandSub;
-        refs.nav.forEach((el, i) => { el.textContent = tr.nav[i]; });
-        refs.cta.lastChild.textContent = ' ' + tr.cta;
-        refs.eyebrow.lastChild.textContent = ' ' + tr.eyebrow;
-        refs.heroTitle.textContent = tr.heroTitle;
-        refs.heroDesc.textContent = tr.heroDesc;
-        refs.heroButtons.forEach((el, i) => { el.lastChild.textContent = ' ' + tr.heroButtons[i]; });
-        refs.heroStats.forEach((el, i) => { el.textContent = tr.heroStats[i]; });
-        refs.searchLabel.textContent = tr.searchLabel;
-        refs.searchTitle.textContent = tr.searchTitle;
-        refs.searchInput.placeholder = tr.searchPlaceholder;
-        refs.searchCategoryOptions.forEach((el, i) => { el.textContent = tr.searchCategoryOptions[i]; });
-        refs.searchCityFirst.textContent = tr.searchCityFirst;
-        refs.searchButton.textContent = tr.searchButton;
-        refs.sideLabel.textContent = tr.sideLabel;
-        refs.sideTitle.textContent = tr.sideTitle;
-        refs.sideDesc.textContent = tr.sideDesc;
-        refs.section1Title.textContent = tr.section1Title;
-        refs.section1Desc.textContent = tr.section1Desc;
-        refs.section1Link.textContent = tr.section1Link;
-        refs.categoryTitles.forEach((el, i) => { el.textContent = tr.categoryTitles[i]; });
-        refs.categoryDescs.forEach((el, i) => { el.textContent = tr.categoryDescs[i]; });
-        refs.section2Title.textContent = tr.section2Title;
-        refs.section2Desc.textContent = tr.section2Desc;
-        refs.section2Link.textContent = tr.section2Link;
-        refs.listingTags.forEach((el, i) => { el.textContent = tr.listingTags[i]; });
-        refs.listingTitles.forEach((el, i) => { el.textContent = tr.listingTitles[i]; });
-        refs.listingDescs.forEach((el, i) => { el.textContent = tr.listingDescs[i]; });
-        refs.detailBtns.forEach((el) => { el.textContent = tr.detailBtn; });
-        refs.editorialLabel.textContent = tr.editorialLabel;
-        refs.editorialTitle.textContent = tr.editorialTitle;
-        refs.editorialDesc.textContent = tr.editorialDesc;
-        refs.quoteTitle.textContent = tr.quoteTitle;
-        refs.quoteDesc.textContent = tr.quoteDesc;
-        refs.bannerTitle.textContent = tr.bannerTitle;
-        refs.bannerDesc.textContent = tr.bannerDesc;
-        refs.bannerLabel.textContent = tr.bannerLabel;
-        refs.bannerItems.forEach((el, i) => { el.lastChild.textContent = ' ' + tr.bannerItems[i]; });
-        refs.footerLeft.textContent = tr.footerLeft;
-        refs.footerRight.textContent = tr.footerRight;
-        langItems.forEach((item) => item.classList.toggle('active', item.dataset.lang === lang));
-        localStorage.setItem('aes_lang', lang);
-      }
+    function nextSlide() {
+      showSlide(slideIndex + 1);
+    }
 
-      toggle.addEventListener('click', function () {
-        langMenu.classList.remove('open');
-        langButton.setAttribute('aria-expanded', 'false');
-        const isOpen = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(isOpen));
-        toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    function prevSlide() {
+      showSlide(slideIndex - 1);
+    }
+
+    function startAutoPlay() {
+      autoPlay = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlay);
+      startAutoPlay();
+    }
+
+    nextBtn.addEventListener('click', () => { nextSlide(); resetAutoPlay(); });
+    prevBtn.addEventListener('click', () => { prevSlide(); resetAutoPlay(); });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetAutoPlay();
       });
+    });
 
-      nav.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          nav.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          toggle.setAttribute('aria-label', 'Open menu');
-        });
+    showSlide(0);
+    startAutoPlay();
+
+    const cartCount = document.querySelector('#cartCount');
+    const cartCountMobile = document.querySelector('#cartCountMobile');
+    let cart = 0;
+    document.querySelectorAll('.buy').forEach(button => {
+      button.addEventListener('click', () => {
+        cart += 1;
+        cartCount.textContent = cart;
+        cartCountMobile.textContent = cart;
+        const old = button.textContent;
+        button.textContent = 'Agregado';
+        setTimeout(() => button.textContent = old, 900);
       });
+    });
 
-      if (langButton && langMenu) {
-        langButton.addEventListener('click', function () {
-          nav.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
-          const isOpen = langMenu.classList.toggle('open');
-          langButton.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        langItems.forEach(function (item) {
-          item.addEventListener('click', function () {
-            applyLang(item.dataset.lang || 'en');
-            langMenu.classList.remove('open');
-            langButton.setAttribute('aria-expanded', 'false');
-          });
-        });
-
-        document.addEventListener('click', function (event) {
-          if (!langMenu.contains(event.target) && !langButton.contains(event.target)) {
-            langMenu.classList.remove('open');
-            langButton.setAttribute('aria-expanded', 'false');
-          }
-        });
-      }
-
-      applyLang(localStorage.getItem('aes_lang') || 'en');
-    })();
+    document.querySelector('.search').addEventListener('submit', event => {
+      event.preventDefault();
+      document.querySelector('#ofertas').scrollIntoView({ behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
