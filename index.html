@@ -78,33 +78,10 @@
       font-size: 24px;
     }
     .brand-logo {
-      width: 44px;
+      width: 58px;
       height: 44px;
-      border-radius: 15px;
-      position: relative;
-      background: linear-gradient(145deg, #173559, #27649e);
-      box-shadow: 0 12px 24px rgba(23, 53, 89, .18);
-      overflow: hidden;
-    }
-    .brand-logo::before {
-      content: "";
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      border-radius: 9px;
-      background: var(--orange);
-      right: 6px;
-      bottom: 6px;
-    }
-    .brand-logo::after {
-      content: "";
-      position: absolute;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: #ffd05a;
-      left: 8px;
-      top: 8px;
+      object-fit: contain;
+      display: block;
     }
 
     .search {
@@ -725,7 +702,7 @@
   <header class="header">
     <div class="wrap header-main">
       <a class="brand" href="#">
-        <span class="brand-logo" aria-hidden="true"></span>
+        <img class="brand-logo" src="public/logo.jpeg" alt="" aria-hidden="true" />
         <span>All Easy</span>
       </a>
 
@@ -1060,7 +1037,7 @@
     <div class="wrap footer-grid">
       <div>
         <a class="brand" href="#">
-          <span class="brand-logo" aria-hidden="true"></span>
+          <img class="brand-logo" src="public/logo.jpeg" alt="" aria-hidden="true" />
           <span>All Easy</span>
         </a>
         <p>Compra fácil para todos. Productos útiles, precios claros y atención cercana en México.</p>
