@@ -64,7 +64,7 @@
     .header-main {
       min-height: 82px;
       display: grid;
-      grid-template-columns: 210px 1fr auto;
+      grid-template-columns: 210px 1fr auto auto;
       align-items: center;
       gap: 18px;
     }
@@ -83,6 +83,45 @@
       object-fit: contain;
       display: block;
     }
+
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.82);
+      color: var(--blue);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(56,42,26,.05);
+    }
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      position: relative;
+      display: block;
+      transition: .2s ease;
+    }
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: .2s ease;
+    }
+    .menu-toggle span::before { top: -7px; }
+    .menu-toggle span::after { top: 7px; }
+    .menu-toggle.open span { background: transparent; }
+    .menu-toggle.open span::before { top: 0; transform: rotate(45deg); }
+    .menu-toggle.open span::after { top: 0; transform: rotate(-45deg); }
 
     .search {
       position: relative;
@@ -156,6 +195,7 @@
       font-size: 14px;
     }
     .navline a.hot { color: var(--orange-2); }
+    .mobile-menu-actions { display: none; }
 
     .hero {
       padding: 34px 0 26px;
@@ -655,7 +695,7 @@
     .mobile-sticky .orange { background: var(--orange); }
 
     @media (max-width: 1050px) {
-      .header-main { grid-template-columns: 190px 1fr; padding: 14px 0; }
+      .header-main { grid-template-columns: 190px 1fr auto; padding: 14px 0; }
       .actions { grid-column: 1 / -1; justify-content: space-between; }
       .hero-grid { grid-template-columns: 1fr; }
       .side-column { grid-template-columns: 1fr 1fr; }
@@ -668,9 +708,65 @@
     @media (max-width: 720px) {
       .top-message .wrap { justify-content: center; text-align: center; }
       .top-message span { display: none; }
-      .header-main { grid-template-columns: 1fr; gap: 12px; }
-      .brand { justify-content: center; }
+      .header-main {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        min-height: 68px;
+      }
+      .brand {
+        justify-content: start;
+        min-width: 0;
+        font-size: 21px;
+      }
+      .brand-logo {
+        width: 52px;
+        height: 38px;
+        flex: 0 0 auto;
+      }
+      .menu-toggle { display: inline-flex; }
+      .search {
+        grid-column: 1 / -1;
+        order: 3;
+      }
+      .search input {
+        height: 46px;
+        font-size: 15px;
+      }
       .actions { display: none; }
+      .navline {
+        display: none;
+        border-top: 1px solid rgba(229, 218, 203, .82);
+        background: rgba(255,250,242,.98);
+      }
+      .navline.open { display: block; }
+      .navline .wrap {
+        min-height: 0;
+        padding: 12px 0 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        overflow: visible;
+      }
+      .navline a {
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+      }
+      .mobile-menu-actions {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .mobile-menu-actions .action {
+        width: 100%;
+        justify-content: center;
+      }
       .slider-shell { min-height: 560px; }
       .hero-buttons .btn { width: 100%; }
       .hero-proof { grid-template-columns: 1fr; }
@@ -715,9 +811,13 @@
         <a class="action" href="https://wa.me/525500000000" target="_blank" rel="noreferrer"><span class="dot"></span> WhatsApp</a>
         <button class="action primary" type="button">Carrito · <span id="cartCount">0</span></button>
       </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primaryNav">
+        <span aria-hidden="true"></span>
+      </button>
     </div>
 
-    <nav class="navline">
+    <nav class="navline" id="primaryNav">
       <div class="wrap">
         <a class="hot" href="#ofertas">Ofertas</a>
         <a href="#categorias">Hogar</a>
@@ -726,6 +826,10 @@
         <a href="#categorias">Auto y viaje</a>
         <a href="#confianza">Envíos</a>
         <a href="#confianza">Pago seguro</a>
+        <div class="mobile-menu-actions">
+          <a class="action" href="https://wa.me/525500000000" target="_blank" rel="noreferrer"><span class="dot"></span> WhatsApp</a>
+          <button class="action primary" type="button">Carrito · <span id="cartCountMenu">0</span></button>
+        </div>
       </div>
     </nav>
   </header>
@@ -1073,6 +1177,8 @@
     const dots = [...document.querySelectorAll('.slider-dot')];
     const prevBtn = document.getElementById('prevSlide');
     const nextBtn = document.getElementById('nextSlide');
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
 
     let slideIndex = 0;
     let autoPlay;
@@ -1114,20 +1220,41 @@
 
     const cartCount = document.querySelector('#cartCount');
     const cartCountMobile = document.querySelector('#cartCountMobile');
+    const cartCountMenu = document.querySelector('#cartCountMenu');
     let cart = 0;
     document.querySelectorAll('.buy').forEach(button => {
       button.addEventListener('click', () => {
         cart += 1;
         cartCount.textContent = cart;
         cartCountMobile.textContent = cart;
+        cartCountMenu.textContent = cart;
         const old = button.textContent;
         button.textContent = 'Agregado';
         setTimeout(() => button.textContent = old, 900);
       });
     });
 
+    function closeMenu() {
+      menuToggle.classList.remove('open');
+      primaryNav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menú');
+    }
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('open');
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    });
+
+    primaryNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
     document.querySelector('.search').addEventListener('submit', event => {
       event.preventDefault();
+      closeMenu();
       document.querySelector('#ofertas').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
